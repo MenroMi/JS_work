@@ -45,10 +45,20 @@
 // console.log(statusAge);
 
 
-const myPhone = {};
+// const myPhone = {};
 
-myPhone.producent = 'Apple';
-myPhone.version = '12 mini';
-myPhone["Country of made"] = 'Poland';
+// myPhone.producent = 'Apple';
+// myPhone.version = '12 mini';
+// myPhone["Country of made"] = 'Poland';
 
-console.log(myPhone);
+// console.log(myPhone);
+
+// const personalMovieDB = { // obiekt dla naszej aplikacji
+//     count: [Number(numberOfFilms)],
+//     movies:{
+//         [String(lastFilm)]: String(rateThisFilm)
+//     },
+//     actors: {},
+//     genres: [],
+//     privat: false,
+// };

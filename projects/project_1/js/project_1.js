@@ -1,21 +1,29 @@
-let numberOfFilms = []; // ilość obejrzanych filmów
-let lastFilm = [], rateThisFilm = []; //ostatni film ( nazwa ), ocena filmu
+const numberOfFilms = +prompt('Сколько фільмов вы уже посмотрелі?', ''); // ilość obejrzanych filmów
 
-numberOfFilms[0] = 3; // pytanie do użytkownika o ilości obejrzanych filmów
-lastFilm[0] = "Matrix"; // pytanie do użytkownika o nazwie ostatniego filmu
-rateThisFilm[0] = 7;  // pytanie dotyczące oceny danego filmu
 
 const personalMovieDB = { // obiekt dla naszej aplikacji
-    count: Number(numberOfFilms),
-    movies:{
-        [String(lastFilm)]: String(rateThisFilm)
+    count: [numberOfFilms],
+    movies: {
+
     },
     actors: {},
     genres: [],
     privat: false,
 };
 
-console.log(personalMovieDB.movies);
+
+const lastFilm = prompt('Какой был последній просмотренный фільм?', ''); 
+// pytanie do użytkownika o nazwie ostatniego filmu
+const rateThisFilm = +prompt('Какую оценку Вы бы поставілі этому фільму?', '');
+// pytanie dotyczące oceny danego filmu
+
+const lastFilm1 = prompt('Какой был последній просмотренный фільм?', '');
+const rateThisFilm1 = +prompt('Какую оценку Вы бы поставілі этому фільму?', '');
+
+personalMovieDB.movies[lastFilm] = rateThisFilm;
+personalMovieDB.movies[lastFilm1] = rateThisFilm1;
+
+console.log(personalMovieDB);
 
 //+prompt('Сколько фільмов вы уже посмотрелі?')
 //prompt('Какой был последній просмотренный фільм?')
