@@ -29,8 +29,8 @@
 // let numberMunis = 2**4;
 // console.log(numberMunis);
 
-let leftSide = "cat",
-    rightSide = false;
+// let leftSide = "cat",
+//     rightSide = false;
 
 // leftSide++;
 // rightSide--;
@@ -39,7 +39,16 @@ let leftSide = "cat",
 // console.log(leftSide || rightSide);
 // console.log(Boolean(leftSide));
 
-let age = 7;
-let statusAge = (age >= 18) ? "adult" : "minor";
+// let age = 7;
+// let statusAge = (age >= 18) ? "adult" : "minor";
 
-console.log(statusAge);
+// console.log(statusAge);
+
+
+const myPhone = {};
+
+myPhone.producent = 'Apple';
+myPhone.version = '12 mini';
+myPhone["Country of made"] = 'Poland';
+
+console.log(myPhone);
