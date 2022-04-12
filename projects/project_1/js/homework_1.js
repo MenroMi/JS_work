@@ -52,6 +52,7 @@ for (let number = 1; number <= 100; number++) {
 
 // console.log(chessBoard);
 
-var randomNumber = Math.floor(Math.random() * 100) + 1;
+// var randomNumber = Math.floor(Math.random() * 100) + 1; // zwraca się randomowa liczba od 1 do 100 - 
+// arytmetyczne wyrażenie
 
-console.log(randomNumber);
+// console.log(randomNumber);
