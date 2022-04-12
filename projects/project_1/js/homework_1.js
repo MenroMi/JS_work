@@ -37,17 +37,21 @@ for (let number = 1; number <= 100; number++) {
 
 // =================
 
-let chessBoard = "";
-let counterLoopBackspace = 0;
-let counterLoopCross = 0;
+// let chessBoard = "";
+// let counterLoopBackspace = 0;
+// let counterLoopCross = 0;
 
-do {
-    if (chessBoard.length % 2 == 1) {
-        chessBoard += ' ';
-        counterLoopBackspace++;
-    } else if (chessBoard.length % 2 == 0) {
-        chessBoard += '#';
-        counterLoopCross++;
-    } while (chessBoard <= 6);
+// do {
+//     if (chessBoard.length % 2 == 1) {
+//         chessBoard += ' ';
+//         counterLoopBackspace++;
+//     } else if (chessBoard.length % 2 == 0) {
+//         chessBoard += '#';
+//         counterLoopCross++;
+//     } while (chessBoard <= 6);
 
-console.log(chessBoard);
+// console.log(chessBoard);
+
+var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+console.log(randomNumber);
