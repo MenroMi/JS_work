@@ -72,7 +72,6 @@ for(i = 0; i < products.length; i++) {
     
 }
 
-console.log(products[i]);
 
 // for(var i = 0; i < products.length; i++) {
 //     var subArray = products[i].split(':');
@@ -83,3 +82,16 @@ console.log(products[i]);
 //     console.log(price);
 // }
 
+const arr = [1, 2, 3, 4, 5];
+const arrObj = {
+    1: 1,
+    4: 'a',
+    3: 3,
+};
+
+const b = 'andrzej';
+console.log(arrObj);
+arrObj[b] = 'hello, bodie';
+console.log(arrObj);
+console.log(arrObj['andrzej']);
+//console.log(arrObj.a);
