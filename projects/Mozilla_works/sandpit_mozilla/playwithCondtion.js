@@ -61,22 +61,29 @@ switch (welcomePolish.length >= number) {
 //     console.log('Please pick a number from 0 to 5!');
 // }
 
-console.log(!1 && 5 && 7 && 4);
-console.log("1" && 2);
-console.log(null && 4);
-console.log("1" && "3");
-console.log(0 && false);
-console.log(0 && 2);
-console.log(true && false);
+console.log( NaN || 2 || undefined ); // 2
+console.log( NaN && null && undefined ); // NaN
+console.log( 1 && 2 && 3 ); // 3
+console.log( !1 && 2 || !3 ); // false
+console.log( 25 || null && !3 ); // 25
+console.log(0 && 2); // 0
+console.log(true && false); // false
+
+console.log( NaN || null || !3 || undefined || 5); // 5
+console.log( NaN || null && !3 && undefined || 5); // 5
+console.log( 5 === 5 && 3 > 1 || 5); // 5
+
+const burger = 1;
+const cola = 3;
+const fries = 3;
+const nuggets = 2;
 
 
-
-const burger = 1, fries = 0, cola = 1;
-
-if (burger === 2 && fries && cola) {
-    console.log('Jemy tu');
+if ( burger === 1 && fries === 3 || cola === 2 && nuggets === 1 ) {
+    console.log('Tak jest');
 } else {
-    console.log('fałsz');
+    console.log('Wynocha');
 }
 
-console.log((burger === 1 && fries && cola === 1));
+console.log( burger === 1 && fries === 3 || cola === 2 && nuggets === 1 );
+
