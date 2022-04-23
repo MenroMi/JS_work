@@ -95,3 +95,11 @@ arrObj[b] = 'hello, bodie';
 console.log(arrObj);
 console.log(arrObj['andrzej']);
 //console.log(arrObj.a);
+
+x = 5;
+
+if (typeof x === 'number') {
+    console.log('ok');
+} else {
+    console.log('nie');
+}

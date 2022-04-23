@@ -47,34 +47,36 @@ for (let count = 1; count < 8; count++) {
 
 // Место для первой задачи
 function firstTask() {
-    // Пишем решение вот тут
+    // Пишем решение вот     тут
     for (let numberForLoop = 5; numberForLoop <= 10; numberForLoop++) {
         console.log(numberForLoop);
     }
-    return numberForLoop;
 }
-let x = firstTask();
-console.log(x);
-
-
-let numberForLoop = 5;
-do {
-    console.log(numberForLoop);
-    numberForLoop++;
-} while (numberForLoop <= 10);
+// let numberForLoop = 5;
+// do {
+//     console.log(numberForLoop);
+//     numberForLoop++;
+// } while (numberForLoop <= 10);
 
 
 // Место для второй задачи
 function secondTask() {
     // Пишем решение вот тут
-    
+    for (let minusNumberForLoop = 20; minusNumberForLoop >= 10; minusNumberForLoop--) {
+        if (minusNumberForLoop === 13) {
+            break;
+        }
+        console.log(minusNumberForLoop);
+    }
     
 }
 
 // Место для третьей задачи
 function thirdTask() {
     // Пишем решение вот тут
-    
+    for (let plusNumber = 2; plusNumber <= 10; plusNumber += 2) {
+        console.log(plusNumber);
+    }
     
 }
 
@@ -82,17 +84,24 @@ function thirdTask() {
 
 // Цикл, который нужно переписать:
 
-// for (let i = 2; i <= 16; i++) {
-//     if (i % 2 === 0) {
-//         continue;
-//     } else {
-//         console.log(i);
-//     }
-// }
+for (let i = 2; i <= 16; i++) {
+    if (i % 2 === 0) {
+        continue;
+    } else {
+        console.log(i);
+    }
+}
 
 function fourthTask() {
     // Пишем решение вот тут
-    
+    let i = 2;
+    while (i < 16) {
+        i++;
+        if (i % 2 === 0) {
+            continue;
+        }
+        console.log(i);
+    }
     
 }
 
@@ -101,9 +110,83 @@ function fourthTask() {
 function fifthTask() {
     const arrayOfNumbers = [];
 
+    arrayOfNumbers.push(5, 6, 7, 8, 9,10);
+
+    console.log(arrayOfNumbers);
     // Пишем решение вот тут
     
     
     // Не трогаем
     return arrayOfNumbers;
+}
+
+//===================
+
+// Место для первой задачи
+function firstTask() {
+    // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
+    const arr = [3, 5, 8, 16, 20, 23, 50];
+    // console.log(arr[arr.length-2]);
+    const result = [];
+
+    // Пишем решение вот тут
+    
+    for (let i = 0; i < arr.length; i++) {
+        let subArray = arr[i];
+        result.push(subArray);
+    }
+    console.log(arr);
+    console.log(result);
+    // Не трогаем
+    return result;
+}
+
+// Место для второй задачи
+function secondTask() {
+    // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
+    const data = [5, 10, 'Shopping', 20, 'Homework'];
+    const data1 = [];
+
+    // Пишем решение вот тут
+    for (let x = 0; x < data.length; x++) {
+        let subArray = data[x];
+        if (typeof subArray === 'number') {
+            subArray *= 2;
+        } else {
+            subArray += ' - done';
+        }
+
+        data1.push(subArray);
+    }
+    console.log(data1);
+
+    // for (const data1 of data) {
+    //     if (typeof data1 === 'number') {
+    //         data1 *= 2;
+    //     } else {
+    //         data1 += ' - done';
+    //     }
+    //     console.log(subArray);
+    // }  
+    // }
+
+    
+    // Не трогаем
+    return data;
+}
+
+// Место для третьей задачи
+function thirdTask() {
+    // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
+    const data = [5, 10, 'Shopping', 20, 'Homework'];
+    const result = [];
+
+    // Пишем решение вот тут
+    for (let x = 4; x >= 0; x--) {
+        result[4-x] = data[x];
+        console.log(result);
+    
+    }
+    // Не трогаем
+    return result;
 }
