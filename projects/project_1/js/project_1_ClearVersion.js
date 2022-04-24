@@ -9,11 +9,17 @@ const personalMovieDB = { // obiekt dla naszej aplikacji
 };
 let i = 0;
 
-first: do {
+first: do { // dodana została etykieta (label), do której można się zwrócić
     const lastFilm = prompt('Какой был последній просмотренный фільм?', '');
-    if (lastFilm == false || lastFilm === null) {
+    if (lastFilm == false || lastFilm === null) { 
+/*
+Górny if zawiera warunki, gdy zmienna z odpowiedzią będzie miała pustą (false) lub anulowaną odpowiedź (null)
+*/
         alert('Нельзя строк пустых');
-        continue first;
+        continue first; 
+/*
+W przypadku spełnionego warunku wyskakuje alarm i loop wraca do początku (dzięki połączonej etykiecie)
+*/
     } else if (lastFilm.length >= 50) {
         alert('Слішком большое названіе!');
         continue first;
@@ -23,6 +29,9 @@ first: do {
         if (rateThisFilm > 10 || rateThisFilm === null || rateThisFilm == false) {
             alert('Оценка должна быть от 0 до 10.');
             x--;
+/*
+inkrement (x++) dodaje liczbę do naszej wartości (x), a przy spełnieniu warunka, to dekrement (x--) cofa
+*/
         } else {
             personalMovieDB.movies[lastFilm] = rateThisFilm;
         }
