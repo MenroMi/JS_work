@@ -103,3 +103,11 @@ if (typeof x === 'number') {
 } else {
     console.log('nie');
 }
+
+const data = [1, 2, 3, 4, 5];
+const result = [];
+
+for (let i = 0; i <= 4; i++) {
+    result[i] = data [i];
+    console.log(result);
+}

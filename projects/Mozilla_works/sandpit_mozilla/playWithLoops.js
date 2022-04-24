@@ -145,20 +145,17 @@ function firstTask() {
 function secondTask() {
     // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
     const data = [5, 10, 'Shopping', 20, 'Homework'];
-    const data1 = [];
 
     // Пишем решение вот тут
     for (let x = 0; x < data.length; x++) {
-        let subArray = data[x];
-        if (typeof subArray === 'number') {
-            subArray *= 2;
+        if (typeof data[x] === 'number') {
+            data[x] *= 2;
         } else {
-            subArray += ' - done';
+            data[x] += ' - done';
         }
-
-        data1.push(subArray);
     }
-    console.log(data1);
+    // data1.push(subArray);
+    // console.log(data1);
 
     // for (const data1 of data) {
     //     if (typeof data1 === 'number') {
@@ -180,9 +177,12 @@ function thirdTask() {
     // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
     const data = [5, 10, 'Shopping', 20, 'Homework'];
     const result = [];
+    const data1 = [];
+
+    console.log(result.length);
 
     // Пишем решение вот тут
-    for (let x = 4; x >= 0; x--) {
+    for (let x = 4; x >= data1.length; x--) {
         result[4-x] = data[x];
         console.log(result);
     
@@ -190,3 +190,61 @@ function thirdTask() {
     // Не трогаем
     return result;
 }
+
+
+let result = '';
+
+for (let i = 1; i < 8; i++) {
+
+    for (let j = 0; j < i; j++) {
+        result += '*';
+    }
+    result += '\n';
+}
+console.log(result);
+
+const lines = 5;
+let resultOne = '';
+
+for (let enterLines = 1; enterLines <= lines; enterLines++) {
+
+    for (let sign = enterLines; sign < enterLines; sign++) {
+        resultOne += ' ';
+    }
+
+    for (let sign = 1; sign <= (2*enterLines - 1); sign++) {
+        resultOne += '*';
+    }
+
+    resultOne += '\n';
+}
+console.log(resultOne);
+
+// if ( b % 2 == 1) {
+//     resultOne += '-';
+// } else {
+//     continue;
+// } 
+
+const linesTwo = 5;
+let resultTwo = ''; 
+ 
+for (let i = linesTwo ; i >= 0; i--) {
+    for (let j = 0; j <= linesTwo; j++) {
+        if (j < i) {
+            resultTwo += " ";
+        } else {
+            resultTwo += '*';
+        }        
+    }
+    for (let k = 0; k <= linesTwo; k++) {
+        if (k > i) {
+            resultTwo += "*";
+        } else {
+            resultTwo += '';
+        }        
+    }
+    resultTwo += '\n';
+}
+ 
+console.log(resultTwo);
