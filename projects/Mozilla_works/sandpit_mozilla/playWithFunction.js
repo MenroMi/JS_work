@@ -92,18 +92,93 @@ function makeWorker() {
   const b = sayHi('Alex');
   console.log(b);
 
-function sayHiBye(firstName, lastName) {
+function makeCounter() {
+    let count = 0;
 
-// функция-помощник, которую мы используем ниже
-    function getFullName() {
-        return firstName + " " + lastName;
-    }
+    return function() {
+        return count++; // есть доступ к внешней переменной "count"
+    };
+}
+  
+let counter = makeCounter();
+  
+console.log( counter() ); // 0
+console.log( counter() ); // 1
+console.log( counter() ); // 2
 
-    console.log("Hello, " + getFullName());
-    console.log("Bye, " + getFullName());
+const bug = 2;
+
+function FirstBug(title) { 
+
+    this.secondBug = function() {
+        console.log(title);
+    };
 
 }
 
-const firstFunct = sayHiBye('Cyryl', 'Szczasny');
-console.log(firstFunct());
+let firstBug = new FirstBug('Cyryl');
+firstBug.secondBug();
 
+
+function createCounter() {
+    let counter = 0;    
+    const firstFunction = function() {
+        counter += 1;
+        return counter;
+    };
+    return firstFunction;
+}
+
+const increment = createCounter();
+// const c1 = increment();
+// const c2 = increment();
+console.log(increment(), increment(), increment());
+
+function makeCounter() {
+    let count = 0;
+    return function() {
+      return count++;
+    };
+  }
+  
+let counter1 = makeCounter();
+let counter2 = makeCounter();
+
+console.log( counter1() ); // 0
+console.log( counter1() ); // 1
+
+console.log( counter2() ); // 0 
+
+
+let nameForFun = 'Johny';
+
+function createNewFun(restOfSentence) {
+    let counter = 0;
+    const newInternalFun =  function() {
+        counter += 1;
+        let oneSentence = nameForFun + ' ' + restOfSentence + ' ' + counter;
+        return oneSentence;
+    };
+    return newInternalFun;
+}
+
+// const resultSen = createNewFun('go back!');
+// console.log(resultSen);
+
+
+nameForFun = 'Anna';
+
+const resultSen = createNewFun('come here!');
+const c1 = resultSen();
+const c2 = resultSen();
+console.log(resultSen());
+
+
+console.log(typeof undefined);
+
+
+const arrowFun = n => x => {return x * n;};
+
+const resArrowFun = arrowFun(3);
+let res2ArrowFun = resArrowFun(5);
+console.log(res2ArrowFun);
