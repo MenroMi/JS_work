@@ -20,6 +20,8 @@ let personalMovieDB = { // obiekt dla naszej aplikacji
     privat: true,
 };
 
+
+
 function showMyDB() { // sprawdza czy user wybrał true or false w sprawie publiczności ankiety
 
     startgame: do {
@@ -40,6 +42,8 @@ function showMyDB() { // sprawdza czy user wybrał true or false w sprawie publi
 
 }
 
+showMyDB();
+
 function dontShowDB() { // w przypadku false w poprzedniej funkcji program na końcu nie wyświetli tabeli(obiektu)
     if (personalMovieDB.privat === true) {
         alert('Ошибка, анкета закрыта для просмотра!');
@@ -48,42 +52,49 @@ function dontShowDB() { // w przypadku false w poprzedniej funkcji program na ko
  }
 
 
-function questionForUsers() {
+function writeYourGenres() {
 
-    let i = 0;
-
-    first: do { // dodana została etykieta (label), do której można się zwrócić
-        const lastFilm = prompt('Какой был последній просмотренный фільм?', '');
-        if (lastFilm == false || lastFilm === null) { 
-    /*
-    Górny if zawiera warunki, gdy zmienna z odpowiedzią będzie miała pustą (false) lub anulowaną odpowiedź (null)
-    */
-            alert('Нельзя строк пустых');
-            continue first; 
-    /*
-    W przypadku spełnionego warunku wyskakuje alarm i loop wraca do początku (dzięki połączonej etykiecie)
-    */
-        } else if (lastFilm.length >= 50) {
-            alert('Слішком большое названіе!');
-            continue first;
-        }
-        for ( let x = 0; x < 1; x++) {
-            const rateThisFilm = +prompt('Какую оценку Вы бы поставілі этому фільму?', '');
-            if (rateThisFilm > 10 || rateThisFilm === null || rateThisFilm == false) {
-                alert('Оценка должна быть от 0 до 10.');
-                x--;
-    /*
-    inkrement (x++) dodaje liczbę do naszej wartości (x), a przy spełnieniu warunka, to dekrement (x--) cofa
-    */
-            } else {
-                personalMovieDB.movies[lastFilm] = rateThisFilm;
-            }
-        }
-        // personalMovieDB.movies[lastFilm] = rateThisFilm;
-        i++;    
-    } while ( i < 2 );
-
+    for ( let k = 1; k <= 3; k++) {
+        personalMovieDB.genres[k] = k;
+        let answerUser = prompt(`Ваш любимый жанр под номером ${personalMovieDB.genres[k]}?`);
+        personalMovieDB.genres[k] = answerUser;
+    }
 }
+
+writeYourGenres();
+
+let i = 0;
+
+first: do { // dodana została etykieta (label), do której można się zwrócić
+    const lastFilm = prompt('Какой был последній просмотренный фільм?', '');
+    if (lastFilm == false || lastFilm === null) { 
+/*
+Górny if zawiera warunki, gdy zmienna z odpowiedzią będzie miała pustą (false) lub anulowaną odpowiedź (null)
+*/
+        alert('Нельзя строк пустых');
+        continue first; 
+/*
+W przypadku spełnionego warunku wyskakuje alarm i loop wraca do początku (dzięki połączonej etykiecie)
+*/
+    } else if (lastFilm.length >= 50) {
+        alert('Слішком большое названіе!');
+        continue first;
+    }
+    for ( let x = 0; x < 1; x++) {
+        const rateThisFilm = +prompt('Какую оценку Вы бы поставілі этому фільму?', '');
+        if (rateThisFilm > 10 || rateThisFilm === null || rateThisFilm == false || isNaN(rateThisFilm)) {
+            alert('Оценка должна быть от 0 до 10.');
+            x--;
+/*
+inkrement (x++) dodaje liczbę do naszej wartości (x), a przy spełnieniu warunka, to dekrement (x--) cofa
+*/
+        } else {
+            personalMovieDB.movies[lastFilm] = rateThisFilm;
+        }
+    }
+    // personalMovieDB.movies[lastFilm] = rateThisFilm;
+    i++;    
+} while ( i < 2 );
 
 function yourInvolvement() {
 
@@ -99,8 +110,6 @@ function yourInvolvement() {
 
 }
 
-showMyDB();
-questionForUsers();
 yourInvolvement();
 
 dontShowDB();
