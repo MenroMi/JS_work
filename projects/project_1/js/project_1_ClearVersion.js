@@ -55,7 +55,6 @@ function dontShowDB(hidden) { // w przypadku false w poprzedniej funkcji program
 function writeYourGenres() {
 
     for ( let k = 1; k <= 3; k++) {
-        personalMovieDB.genres[k] = k;
         let answerUser = prompt(`Ваш любимый жанр под номером ${k}?`);
         if ( answerUser === null || answerUser == '' || +answerUser) {
             k--;
