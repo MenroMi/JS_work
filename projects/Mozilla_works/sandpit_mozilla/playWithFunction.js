@@ -182,3 +182,98 @@ const arrowFun = n => x => {return x * n;};
 const resArrowFun = arrowFun(3);
 let res2ArrowFun = resArrowFun(5);
 console.log(res2ArrowFun);
+
+// =========================
+
+
+// pierwsze zadanie:
+
+function calculateVolumeAndArea(edge) {
+    if (typeof(edge) === 'string' || edge < 0 || edge % 1 === 0 === false) {
+        return "При вычислении произошла ошибка";
+    } else if ( +edge ) {
+        return `Объем куба: ${edge * edge * edge}, площадь всей поверхности: ${6 * (edge * edge)}`;
+    }
+}
+
+const holy = calculateVolumeAndArea('50');
+console.log(holy);
+
+// ==========================
+
+// drugie zadanie:
+
+function getCoupeNumber(isInteger) {
+    if (typeof(isInteger) != 'string' && Number.isInteger(isInteger) && (isInteger > 0 && isInteger < 36)) {
+        if ([1, 2, 3, 4].includes(isInteger)) {
+            return 1;
+        } else if ([5, 6, 7, 8].includes(isInteger)) {
+            return 2;
+        } else if ([9, 10, 11, 12].includes(isInteger)) {
+            return 3;
+        } else if ([13, 14, 15, 16].includes(isInteger)) {
+            return 4;
+        } else if ([17, 18, 19, 20].includes(isInteger)) {
+            return 5;
+        } else if ([21, 22, 23, 24].includes(isInteger)) {
+            return 6;
+        } else if ([25, 26, 27, 28].includes(isInteger)) {
+            return 7;
+        } else if ([29, 30, 31, 32].includes(isInteger)) {
+            return 8;
+        } else if ([33, 34, 35, 36].includes(isInteger)) {
+            return 9;  
+        }
+    } else if ( isInteger === 0 || isInteger > 36 ) {
+        return "Таких мест в вагоне не существует";
+    } else {
+        return "Ошибка. Проверьте правильность введенного номера места";
+    }
+}
+
+let valueOurFun = getCoupeNumber(5);
+console.log(valueOurFun);
+
+// =====================
+
+// trzecie zadanie:
+
+function getTimeFromMinutes(time) {
+    
+    if (typeof(time) !== 'number' || !Number.isInteger(time) || time < 0 ) {
+        return `Ошибка, проверьте данные`;
+    } else {
+        const hours = Math.floor(time / 60);
+        const minutes = time % 60;
+        if (hours === 0 || (hours >= 5 && hours < 21)) {
+        return `Это ${hours} часов ${minutes} минут`;
+        } else if (hours === 1 || hours === 21 || hours === 31) {
+        return `Это ${hours} час ${minutes} минут`;    
+        } else {
+        return `Это ${hours} часа ${minutes} минут`;          
+        }
+    }
+
+}
+
+console.log(getTimeFromMinutes(-150));
+
+//==========================
+
+// czwarte zadanie:
+
+
+function findMaxNumber(num1, num2, num3, num4) {
+    const arrayInFun = [num1, num2, num3, num4];
+    let maxNumber = [];            // let largest = arrayInFun[0] || null;
+    for (let k = 0; k < arrayInFun.length; k++) {
+        let a = arrayInFun[k];
+        if (typeof(a) === 'string' || isNaN(a)) {
+            return 0;
+        }
+        maxNumber = Math.max(maxNumber, a);
+    }
+    return maxNumber;
+}
+
+console.log(findMaxNumber(1, 5, "6", "10"));
