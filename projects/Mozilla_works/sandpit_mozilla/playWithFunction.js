@@ -265,15 +265,25 @@ console.log(getTimeFromMinutes(-150));
 
 function findMaxNumber(num1, num2, num3, num4) {
     const arrayInFun = [num1, num2, num3, num4];
-    let maxNumber = [];            // let largest = arrayInFun[0] || null;
+    let maxNumber = 0;            // let largest = arrayInFun[0] || null;
     for (let k = 0; k < arrayInFun.length; k++) {
-        let a = arrayInFun[k];
-        if (typeof(a) === 'string' || isNaN(a)) {
+        if (typeof(arrayInFun[k]) === 'string' || isNaN(arrayInFun[k])) {
             return 0;
         }
-        maxNumber = Math.max(maxNumber, a);
+        maxNumber = Math.max(maxNumber, arrayInFun[k]);
     }
     return maxNumber;
 }
 
-console.log(findMaxNumber(1, 5, "6", "10"));
+console.log(findMaxNumber(1, 5, 6, 11));
+
+
+// ===================
+
+function loadScript(src) {
+    let script = document.createElement('script');
+    script.src = src;
+    document.head.append(script);
+}
+
+loadScript('/projects/project_1/js/project_1_ClearVersion.js');
