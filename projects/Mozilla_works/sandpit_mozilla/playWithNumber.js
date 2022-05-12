@@ -54,12 +54,6 @@ console.log(Number.isInteger(65));
 
 // ==========================
 
-
-let massivWithPlace = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11,12], [13, 14, 15, 16], [17, 18, 19, 20], [21, 22, 23, 24], [25, 26, 27, 28], [29, 30, 31, 32], [33, 34, 35, 36]];
-let isInteger = 5;
-
-console.log(isInteger.includes(massivWithPlace));
-
 function getCoupeNumber(number) {
     if(Number.isInteger(number) && number > 1 && number < 37){
         let result = Math.ceil(number / 4);
@@ -97,3 +91,7 @@ console.log(getCoupeNumber(23));
 
 const numberForCeil = 4;
 console.log(Math.ceil(numberForCeil / 4));
+
+
+let emptyString = '';
+console.log(emptyString == false);

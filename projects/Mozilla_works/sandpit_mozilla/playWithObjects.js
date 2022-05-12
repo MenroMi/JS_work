@@ -40,6 +40,42 @@ for (var key in o) {
 }
 
 
+// =======================
+
+
+const myBack = {
+  wallet: '5 dollars and credit card',
+  nameBook: 'book with title - 1984',
+  cosmetics: {
+    lipstick: 'red',
+    blush: 'pink',s
+    eyeliner: 'black',
+    mascara: 'brown'
+  },
+  "headphones": 'Airpods'
+};
+
+let res = "headphones";
+
+console.log(myBack[res]);
+
+// let counter = 0;
+
+// for ( let key in myBack) {
+//   if ( typeof(myBack[key]) === 'object' ) {
+//     counter++;
+//     console.log(`${counter}. ${key} имеет следующие свойства:`);
+//     for (let i in myBack[key]) { 
+//       console.log(`\t--- Свойство: ${i} имеет значение: ${myBack[key][i]}`);
+//       } 
+//     } else {
+//     counter++;
+//     console.log(`${counter}. Свойство: ${key} имеет значение ${myBack[key]}`);
+//   }
+// }
+
+
+
 
 // const arrayOfObj = Object.keys(options);
 
