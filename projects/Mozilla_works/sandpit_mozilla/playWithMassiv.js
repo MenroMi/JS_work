@@ -111,3 +111,15 @@ for (let i = 0; i <= 4; i++) {
     result[i] = data [i];
     console.log(result);
 }
+
+// let arrayOne = ['Alex','Gomer', 'Holand'];
+
+// let [firstName, secondName] = "Alex Holand".split(' ');
+
+// console.log(firstName, secondName);
+
+const userInfo = {};
+
+[userInfo.name, userInfo.secondName] = 'Alex Holand'.split(' ');
+
+console.log(userInfo);

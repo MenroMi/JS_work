@@ -43,21 +43,45 @@ for (var key in o) {
 // =======================
 
 
-const myBack = {
-  wallet: '5 dollars and credit card',
-  nameBook: 'book with title - 1984',
-  cosmetics: {
-    lipstick: 'red',
-    blush: 'pink',s
-    eyeliner: 'black',
-    mascara: 'brown'
+const propertyForThisObj = {
+  size: {
+    width: 100,
+    height: 200
   },
-  "headphones": 'Airpods'
+  items: ['Cake', "Donut"],
+  extra: true,
 };
 
-let res = "headphones";
+let {
+  size: {
+    width, 
+    height,
+  }, 
+  items: [items1, items2],
+  title = 'Menu'
+} = propertyForThisObj;
 
-console.log(myBack[res]);
+console.log(width);
+console.log(height);
+
+let option1 = {
+  title: "My menu",
+  items: ["Item1", "Item2"]
+};
+
+function showMenu({
+  title = "Untitled",
+  width: w = 100,  // width присваиваем в w
+  height: h = 200, // height присваиваем в h
+  items: [item1, item2] // первый элемент items присваивается в item1, второй в item2
+}) {
+  console.log( `${title} ${w} ${h}` ); // My Menu 100 200
+  console.log( item1 ); // Item1
+  console.log( item2 ); // Item2
+}
+
+showMenu(option1);
+
 
 // let counter = 0;
 
