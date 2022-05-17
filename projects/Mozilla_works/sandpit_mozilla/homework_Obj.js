@@ -123,3 +123,59 @@ function multiplyNumeric(obj) {
 multiplyNumeric(menu);
 
 console.log(menu);
+
+// ==================
+// zadanie #5
+
+const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+function showFamily (arr) {
+    
+    let str = '';
+
+    if ( arr.length === 0 ) {
+        str += 'Семья пуста';
+    } else {
+        str += 'Семья состоит из: ';
+        for ( let key of arr) {
+            str += `${key} `;
+        }
+    }
+ 
+    return str;
+
+}
+
+console.log(showFamily(family));
+
+// ================
+// zadanie #6
+
+const arrayOfCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function favoriteCities(item) {
+    let str = '';
+    for ( let key of item) {
+
+    }
+
+//     let str = '';
+//     item.forEach(function(arr) {
+//         str += `${arr.toLowerCase()}\n`;
+//     });
+
+//     console.log(str);
+}
+
+favoriteCities(arrayOfCities);
+
+
+
+const i = false;
+
+let str = '';
+
+i === true ? str = 'Ok' : str = 'Nie ok';
+
+console.log(str);
+

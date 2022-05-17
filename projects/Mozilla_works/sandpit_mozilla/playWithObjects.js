@@ -129,3 +129,26 @@ showMenu(option1);
 // }
 
 // console.log(`Кол-во свойств в объекте: ${numbersOfProperty}`);
+
+// ===============================
+// descryptory i flagi
+const objForExample = {
+  firstItem: 1,
+  secondItem: 2
+};
+
+let descriptor = Object.getOwnPropertyDescriptor(objForExample, 'firstItem'); // stworzenie descryptora
+
+Object.defineProperty(objForExample, 'firstItem',{writable: false}); // możliwość zmiany flag
+
+let funcDes = des => {
+  let counter = 0;
+  for (let key in des) {
+    counter++;
+    console.log(`${counter}. "${key}": ${des[key]}`);
+  }
+
+};
+
+funcDes(descriptor);
+
