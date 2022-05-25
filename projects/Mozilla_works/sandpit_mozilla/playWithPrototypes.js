@@ -92,10 +92,63 @@ let eagle = {
     canFly: true,
     food: 'mouse',
     __proto__: animal,
+    arrayPropertyEagle() {
+        for ( let key in this) {console.log(key);}
+    },
+
 };
 
 eagle.isPredator = function() {
     return "Орёл любит есть мышей, поэтому он хищник!";
 };
 
-console.log(eagle.whereLived);
+eagle.arrayPropertyEagle();
+
+
+// =====================
+
+let str = 'some'; // примитив
+let strObj = new Object(str); // объект
+
+// =====================
+
+const soldier = {
+    health: 400,
+    armor: 100,
+    sayHi() {
+        console.log('hi!');
+    }    
+};
+
+const john = Object.create(soldier);
+
+john.sayHi();
+
+// ===============
+
+
+let ladder = {
+
+    step: 0,
+
+    up() {
+      this.step++;
+    },
+
+    down() {
+      this.step--;
+    },
+
+    showStep() { // показывает текущую ступеньку
+      console.log( this.step );
+    }
+    
+  };
+
+
+ladder.up();
+ladder.up();
+ladder.down();
+ladder.showStep(); 
+
+ladder.up().up().down().showStep(); 
