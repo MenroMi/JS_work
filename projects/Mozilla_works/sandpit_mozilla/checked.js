@@ -1,3 +1,5 @@
+"use strict";
+
 let user = {
   name: "John",
   surname: "Smith",
@@ -81,3 +83,116 @@ let writeYourGenres = () => {
 writeYourGenres();
 console.log(a.genres);
 
+// ==============================
+
+const shoppingMallData = {
+  shops: [
+      {
+          width: 10,
+          length: 5
+      },
+      {
+          width: 15,
+          length: 7
+      },
+      {
+          width: 20,
+          length: 5
+      },
+      {
+          width: 8,
+          length: 10
+      },
+      {
+        width: 8,
+        length: 10
+      },
+      {
+        width: 8,
+        length: 10
+      },
+      {
+        width: 8,
+        length: 10
+      },
+  
+  ],
+  height: 10,
+  moneyPer1m3: 30,
+  budget: 40000
+};
+
+function isBudgetEnough(data) {
+
+  let res = 0;  
+
+  for ( let key of data.shops) {
+    res += key.width * key.length;
+  }
+
+  res = (res * data.height) * data.moneyPer1m3;
+
+  return res < data.budget ? "Бюджета достаточно" : "Бюджета недостаточно";
+
+}
+
+console.log(isBudgetEnough(shoppingMallData));
+
+// function isBudgetEnough(data) {
+  
+//   let totalArea = 1;
+//   let totalAreaMall = 0;
+
+//   data.shops.forEach(shop => {
+//     totalArea *= shop.width * shop.length;
+//   });
+
+//   console.log(totalArea);
+  
+//   totalAreaMall = totalArea * data.height;
+  
+//   return data.budget > (data.moneyPer1m3 * totalAreaMall) ? 'Бюджета достаточно' : 'Бюджета недостаточно';
+//  }
+
+//  console.log(isBudgetEnough(shoppingMallData));
+
+
+// =========================
+
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam', 'Cyryl'];
+
+function sortStudentsByGroups(arr) {
+  arr = arr.sort();
+  
+  let groupOne = [],
+  groupTwo = [],
+  groupThree = [],
+  restOfClassmates = 'Оставшиеся студенты: ';
+
+  for (let i = 0; i < arr.length; i++) {
+    if (i < 3) {
+      groupOne.push(arr[i]);
+    } else if (i === 3 || i < 6) {
+      groupTwo.push(arr[i]);
+    } else if ( i === 6 || i < 9) {
+      groupThree.push(arr[i]); 
+    } else if (i === 9 || i > 9){
+      restOfClassmates += `${arr[i]}, `;
+    } else {
+      break;
+    }
+  }
+  
+  if (restOfClassmates.length == 21) {
+    restOfClassmates += '-';
+  } else {
+    restOfClassmates = restOfClassmates.trim().slice(0, -1);
+  }
+
+  let result = [groupOne, groupTwo, groupThree, restOfClassmates];
+
+  console.log(result);
+
+}
+sortStudentsByGroups(students);
+// console.log(sortStudentsByGroups(students));

@@ -1,3 +1,5 @@
+"use strict";
+
 // let numb = 50;
 
 // while (numb <= 100) {
@@ -248,3 +250,33 @@ for (let i = linesTwo ; i >= 0; i--) {
 }
  
 console.log(resultTwo);
+
+// ====================
+
+let abc = 7;
+let a = 0;
+
+
+cont: for ( let i = 1; i <= abc; i++) {
+    if (i >= 5) {
+        continue cont;
+    } else if (i === 1) {
+        console.log(`${i} - человек`);
+    } else if (i % 2 == 0 || i === 3) {
+        console.log(`${i} - человека`); 
+    }
+}
+
+// wyświetlić liczb pierwszych
+
+const numbForNaturalNum = 100;
+
+another: for (let k = 2; k <= numbForNaturalNum; k++) {
+    for (let j = 2; j < k; j++) {
+        console.log(`========= ${j} - ${k}`);
+        if ( k % j == 0) {continue another;}
+    }
+
+    console.log(k);
+}
+

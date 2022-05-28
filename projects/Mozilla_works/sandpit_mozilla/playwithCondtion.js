@@ -1,3 +1,5 @@
+"use strict";
+
 // const number = 100;
 
 // (number >= 100) ? console.log('Tak trzymaj!') : console.log('Nie, niestety');
@@ -87,4 +89,22 @@ if ( burger === 1 && fries === 3 || cola === 2 && nuggets === 1 ) {
 
 console.log( burger === 1 && fries === 3 || cola === 2 && nuggets === 1 );
 
-// 
+//====================
+
+let userIsAdmin = 1;
+
+let res = !userIsAdmin ? console.log('ok') : console.log('not ok'); // тернарный оператор
+
+let numberForCond = -4544;
+
+let j = 1;
+let b = 4;
+let resu;
+
+
+resu = (j + b < 4) ? console.log('Мало') : console.log('Много');
+
+
+
+let stringos = 'last, ';
+console.log(stringos.trim().slice(0, -1));
