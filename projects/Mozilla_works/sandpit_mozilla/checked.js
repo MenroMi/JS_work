@@ -159,40 +159,97 @@ console.log(isBudgetEnough(shoppingMallData));
 
 // =========================
 
-const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam', 'Cyryl'];
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi'];
 
 function sortStudentsByGroups(arr) {
+
   arr = arr.sort();
-  
-  let groupOne = [],
-  groupTwo = [],
-  groupThree = [],
-  restOfClassmates = 'Оставшиеся студенты: ';
 
-  for (let i = 0; i < arr.length; i++) {
-    if (i < 3) {
-      groupOne.push(arr[i]);
-    } else if (i === 3 || i < 6) {
-      groupTwo.push(arr[i]);
-    } else if ( i === 6 || i < 9) {
-      groupThree.push(arr[i]); 
-    } else if (i === 9 || i > 9){
-      restOfClassmates += `${arr[i]}, `;
+  let stringos = 'Оставшиеся студенты: ';
+  let res = [[], [], []];
+  
+  arr.forEach((item, i) => {
+    if ( i <= 2) {
+      res[0].push(item);
+    } else if (i <= 5) {
+      res[1].push(item);
+    } else if (i <= 8) {
+      res[2].push(item);
     } else {
-      break;
+      stringos += `${item}, `;
     }
-  }
-  
-  if (restOfClassmates.length == 21) {
-    restOfClassmates += '-';
-  } else {
-    restOfClassmates = restOfClassmates.trim().slice(0, -1);
-  }
+});
 
-  let result = [groupOne, groupTwo, groupThree, restOfClassmates];
+  stringos = stringos.length > 21 ? stringos = stringos.trim().slice(0, -1) : stringos += '-';
 
-  console.log(result);
+  // if (stringos.length > 21) {
+  // stringos = stringos.trim().slice(0, -1);
+  // } else {
+  // stringos += '-';
+  // }
+  res.push(stringos);
+
+  return res;
 
 }
-sortStudentsByGroups(students);
+
+console.log(sortStudentsByGroups(students));
+
+// }
+  // let groupOne = [],
+  // groupTwo = [],
+  // groupThree = [],
+  // restOfClassmates = 'Оставшиеся студенты: ';
+
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (i < 3) {
+  //     groupOne.push(arr[i]);
+  //   } else if (i === 3 || i < 6) {
+  //     groupTwo.push(arr[i]);
+  //   } else if ( i === 6 || i < 9) {
+  //     groupThree.push(arr[i]); 
+  //   } else if (i === 9 || i > 9){
+  //     restOfClassmates += `${arr[i]}, `;
+  //   } else {
+  //     break;
+  //   }
+  // }
+  
+  // if (restOfClassmates.length == 21) {
+  //   restOfClassmates += '-';
+  // } else {
+  //   restOfClassmates = restOfClassmates.trim().slice(0, -1);
+  // }
+
+  // let result = [groupOne, groupTwo, groupThree, restOfClassmates];
+
+  // console.log(result);
+
+
 // console.log(sortStudentsByGroups(students));
+
+
+// =====================
+ 
+// function sortStudentsByGroups(arr) {
+//   const sortArr = arr.sort();
+//   console.log(sortArr);
+ 
+//   const resultArr = [], groupArr = [];
+ 
+//   sortArr.forEach(item => {
+//     groupArr.push(item);
+ 
+//     if (groupArr.length === 3) {
+//       resultArr.push(groupArr.slice());
+//       groupArr.length = 0;
+//     }
+//   });
+ 
+//   resultArr.push(`Оставшиеся студенты: ${groupArr.length === 0 ? '-' : groupArr.join(', ')}`);
+//   return resultArr;
+// }
+
+// console.log(sortStudentsByGroups(students));
+
+// =================================
