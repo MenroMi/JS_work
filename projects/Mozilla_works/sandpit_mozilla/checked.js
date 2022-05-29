@@ -24,17 +24,17 @@ console.log(admin.surname); // Cooper
 // ===============================
 
 
-let a = {
+let abs = {
   name: 'John',
   isAdmin: true,
   age: 30,
   oneFunc(keyCheck) {
     if (keyCheck === false) {
-        a.isAdmin = true;
-        console.log('wartość zmiennej: ' + a.isAdmin);
+        abs.isAdmin = true;
+        console.log('wartość zmiennej: ' + abs.isAdmin);
     } else if (keyCheck === true) {
-        a.isAdmin = false;
-        console.log('wartość zmiennej: ' + a.isAdmin);
+        abs.isAdmin = false;
+        console.log('wartość zmiennej: ' + abs.isAdmin);
     }
   }
 };
@@ -42,16 +42,16 @@ let a = {
 
 
 
-a.oneFunc(a.isAdmin);
-console.log(a.isAdmin);
-a.oneFunc(a.isAdmin);
-console.log(a.isAdmin);
-a.oneFunc(a.isAdmin);
-console.log(a.isAdmin);
+abs.oneFunc(abs.isAdmin);
+console.log(abs.isAdmin);
+abs.oneFunc(abs.isAdmin);
+console.log(abs.isAdmin);
+abs.oneFunc(abs.isAdmin);
+console.log(abs.isAdmin);
 
 
 // =====================================
-let a = {
+let aw = {
   firstname: 'John',
   genres: []
 };
@@ -68,20 +68,20 @@ let writeYourGenres = () => {
           k--;
       } else {
           
-          a.genres = answerUser.split(',');
+          aw.genres = answerUser.split(',');
           // a.genres = answerUser;
       }
 
   }
 
-  a.genres.forEach((key, i) => {
+  aw.genres.forEach((key, i) => {
       console.log(`Любимый жанр #${i+1} - это ${key}`);
     });
   // personalMovieDB.genres.pop();
 };
 
 writeYourGenres();
-console.log(a.genres);
+console.log(aw.genres);
 
 // ==============================
 
