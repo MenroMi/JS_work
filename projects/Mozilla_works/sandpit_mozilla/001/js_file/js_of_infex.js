@@ -1,22 +1,12 @@
 "use strict";
 
-function hello() {
-    console.log('Hello World!');
-}
-
-hello();
-
-function hi() {
-    console.log('Say hi!');
-}
-
-hi();
-
-const arr = [12, 4, 5, 21, 34],
-sorted = arr.sort(compareNum);
-
-function compareNum(a, b) {
-    return a - b;
-}
-
-console.log(arr);
+function User(name) {
+    this.name = name;
+    this.isAdmin = false;
+  }
+  
+let user = new User("Вася");
+let admin = new User('Андрей');
+admin.isAdmin = true;
+console.log(user.name, user.isAdmin);
+console.log(admin.name, admin.isAdmin);

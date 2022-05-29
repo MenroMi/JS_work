@@ -253,3 +253,12 @@ console.log(sortStudentsByGroups(students));
 // console.log(sortStudentsByGroups(students));
 
 // =================================
+
+let number = 5;
+
+function newNumb() {
+  console.log(number);
+}
+
+number = 6;
+newNumb();
