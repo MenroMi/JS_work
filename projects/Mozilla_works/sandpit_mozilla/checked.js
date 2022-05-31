@@ -254,11 +254,44 @@ console.log(sortStudentsByGroups(students));
 
 // =================================
 
-let number = 5;
+let x = 5;
+console.log(x++); // 6 -
 
-function newNumb() {
-  console.log(number);
-}
+console.log([] + false - null + true); // false -  ???
 
-number = 6;
-newNumb();
+let y = 1;
+let h = y = 2;
+
+console.log(h); // 2
+
+console.log([] + 1 + 2); // ?
+
+console.log("1"[0]); // 1
+
+console.log(2 && 1 && null && 0 && undefined); // false -
+
+console.log(!!(a&&b) === (a&&b)); // false
+
+console.log(null || 2 && 3 || 4); // true +
+ 
+let item1 = [1, 2, 3];
+let item2 = [1, 2, 3];
+
+console.log(item1 === item2); // true - ????
+
+console.log(+"Infinity");  //isNaN -
+
+console.log("Ёжик" > "яблоко"); // false +
+
+console.log(0 || "" || 2 || undefined || true || false); //true 
+
+console.log('ё'.codePointAt(0)); // показывает код элемента
+
+
+let numbPre = 1;
+console.log(++numbPre); // 2
+let numbPost = 1;
+console.log(numbPost++); // 1
+console.log(numbPost); // 2
+
+
