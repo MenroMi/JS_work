@@ -294,4 +294,26 @@ let numbPost = 1;
 console.log(numbPost++); // 1
 console.log(numbPost); // 2
 
+// ==============
+
+const mainObj = {
+  itemNumbOne: 'animal',
+  itemNumbTwo: 'man',
+  itemNumbThree: 'Technic'
+};
+
+function copyObj(cloneObj) {
+  let newObj = {};
+
+  for(let key in cloneObj) {
+    newObj[key] = cloneObj[key];
+  }
+
+  return newObj;
+
+}
+
+console.log(copyObj());
+
+
 

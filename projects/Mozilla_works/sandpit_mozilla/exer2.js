@@ -1,3 +1,5 @@
+"use strict";
+
 const restorantData = {
     menu: [
     {
@@ -43,12 +45,21 @@ function isAverageLunchPriceTrue(fDish, sDish, average) {
 console.log(isAverageLunchPriceTrue(restorantData.menu[2], restorantData.menu[1], restorantData.averageLunchPrice));
 
 function transferWaitors(data) {
-    const copy = Object.assign({}, data);
+
+    let copy = {};
+    for ( let key in data) {
+        if ( typeof(data[key]) === 'object' ) {
+            copy[key] = data[key].slice();
+        } else {
+            copy[key] = data[key];
+        }
+    }
 
     copy.waitors[0] = {name: 'Mike', age: 32};
     return copy;
 }
 
-transferWaitors(restorantData);
+const res = transferWaitors(restorantData);
 
-console.log(transferWaitors(restorantData));
+console.log(res);
+console.log(restorantData);
