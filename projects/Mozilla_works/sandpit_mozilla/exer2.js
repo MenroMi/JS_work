@@ -34,15 +34,15 @@ function isOpen(prop) {
 console.log(isOpen(restorantData.openNow));
 
 function isAverageLunchPriceTrue(fDish, sDish, average) {
-    if (+fDish.price.slice(0, -1) + (+sDish.price.slice(0, -1)) < +average.slice(0, -1)) {
+    if (+fDish.price.slice(0, -1) + parseInt(sDish.price) < +average.slice(0, -1)) {
 
-    return 'Цена ниже средней';
+    return 'Цена ниже средней'; 
     } else {
     return 'Цена выше средней';
     }
 }
 
-console.log(isAverageLunchPriceTrue(restorantData.menu[2], restorantData.menu[1], restorantData.averageLunchPrice));
+console.log(isAverageLunchPriceTrue(restorantData.menu[1], restorantData.menu[3], restorantData.averageLunchPrice));
 
 function transferWaitors(data) {
 

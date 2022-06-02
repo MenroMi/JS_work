@@ -1,4 +1,4 @@
-let randomNumber = Math.floor(Math.random() * 200) + 1;
+let randomNumber = Math.floor(Math.random() * 200) + 1; // random number
 console.log(typeof randomNumber + ' --- ' + randomNumber);
 const randomNumber1 = (Math.random() * 200) + 1;
 console.log(typeof randomNumber1 + ' --- ' + randomNumber1);
@@ -95,3 +95,36 @@ console.log(Math.ceil(numberForCeil / 4));
 
 let emptyString = '';
 console.log(emptyString == false);
+
+// ================
+
+console.log(typeof(1e6));
+console.log([] && true);
+console.log(12e-7);
+console.log(5e-6);
+const numb = 2.323;
+console.log(numb.toFixed(0));
+
+let numbOne = 1082;
+console.log(numbOne.toString(36));
+console.log(typeof((255).toString(36)));
+console.log(parseInt('a123', 16));
+console.log(Math.round(Math.random() * 100) + 1);
+
+// =====================
+
+const newFunc = (a, b) => {
+    let res = a * b;
+    return res;
+};
+
+console.log(newFunc(5, 5));
+
+console.log(parseFloat(6.35));
+
+let i = 0;
+while (i != 10) {
+  i += 0.2;
+}
+
+console.log((6.35).toFixed(20));
