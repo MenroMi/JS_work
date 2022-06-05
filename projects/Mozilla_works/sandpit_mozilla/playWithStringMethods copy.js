@@ -109,3 +109,11 @@ const c5 = 3;
 
 console.log(`1. ${Math.ceil(c1)},\n2. ${Math.floor(c2)},\n3. ${Math.round(c3)},\n4. ${Math.trunc(c4)},\n5. ${c5};`);
 
+
+let strForExample = 'Hello, Kiryl'; 
+let strForExample2 = 'hello, Kiryl'; 
+console.log(strForExample.localeCompare(strForExample2));
+
+console.log(strForExample.substring(5, 1));
+console.log("Ö".codePointAt(0));
+console.log(String.fromCodePoint(75));
