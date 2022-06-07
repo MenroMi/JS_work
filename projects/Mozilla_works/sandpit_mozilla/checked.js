@@ -316,4 +316,37 @@ function copyObj(cloneObj) {
 console.log(copyObj());
 
 
+// ==========================
 
+let firstName = 'John',
+  age = 35;
+
+const objUser = {
+  name: firstName,
+  age: age,
+};
+
+console.log(objUser.name);
+console.log(objUser.age);
+
+// ============
+
+let g = 5;
+let j = g + 5;
+
+console.log(g);
+console.log(j);
+console.log(g);
+
+// ================
+
+function yourName() {
+  return this.name;
+}
+
+const myName = {
+  name: 'Gog',
+  isName: yourName
+};
+
+console.log(myName.isName());
