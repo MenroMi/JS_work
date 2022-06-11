@@ -25,12 +25,12 @@ const movieDB = {
 
     removeAdd() {
         const blockAds = document.querySelector('.promo__adv'),
-        picAds = blockAds.querySelectorAll('img[src]'),
+        picAds = blockAds.querySelectorAll('img'),
         titleAds = blockAds.querySelector('.promo__adv-title').remove();   
         
-        picAds[0].remove();
-        picAds[1].remove();
-        picAds[2].remove();
+        picAds.forEach(item => {
+            item.remove();
+        });
     
         return titleAds;        
     },
@@ -47,8 +47,8 @@ const movieDB = {
     replaceBackImg() {
 
         const backImg = document.querySelector('.promo__bg');
-        backImg.style.background = "url('/projects/project_2/img/bg.jpg')";
-        // backImg.style.backgroundPosition = 'top';
+        backImg.style.backgroundImage = "url('/projects/project_2/img/bg.jpg')";
+        backImg.style.backgroundPosition = 'top';
 
         return backImg;
 
@@ -61,13 +61,12 @@ const movieDB = {
 
 
         for(let i = 0; i < sortingFilms.length; i++) {
-            films[i].textContent = `${i+1}. ${sortingFilms[i]}`;
+            films[i].innerHTML = `${i+1}. ${sortingFilms[i]}`;
             films[i].insertAdjacentHTML('beforeend', "<div class='delete'></div>");
         }
 
-        // films.forEach((item, i) => {
-        //     item[i].textContent = `${sortingFilms[i]}`;
-
+        // this.movies.forEach((item, i) => {
+        //     films[i].innerHTML = `${i+1}. ${item} <div class="delete"></div>`;
         // });
 
     }    
