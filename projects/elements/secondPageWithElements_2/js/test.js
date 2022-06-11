@@ -26,7 +26,11 @@ const div = document.createElement('div');
 div.classList.add('black');
 
 // document.body.append(div);
-// wrapper.append(div);
-// heart[0].before(div);
+wrapper.append(div);
 
-heart[0].replaceWith(circles[0]);
+div.innerHTML = "<h1>Hello, World</h1>";
+// div.textContent = "Hello";
+
+// =====================
+
+div.insertAdjacentHTML('afterend', "<h2>Hello, World</h2>");
