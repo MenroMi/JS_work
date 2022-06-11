@@ -350,3 +350,14 @@ const myName = {
 };
 
 console.log(myName.isName());
+
+// =================
+
+function Admin(name, isAdmin) {
+  this.name = name;
+  this.isAdmin = isAdmin;
+}
+
+const userName = new Admin('John', true);
+
+console.log(userName.isAdmin);

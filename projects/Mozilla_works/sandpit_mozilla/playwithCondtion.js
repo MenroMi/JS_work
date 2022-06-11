@@ -108,3 +108,50 @@ resu = (j + b < 4) ? console.log('Мало') : console.log('Много');
 
 let stringos = 'last, ';
 console.log(stringos.trim().slice(0, -1));
+
+// ===================
+
+const nameOfClient = 'Andy';
+
+switch (nameOfClient) {
+    case 'Robert':
+        break;
+    case "Anna":
+        break;
+    case 'Andy':
+        console.log('Yeah, this is Andy!');
+    default:
+        console.log('No, i');
+        break;
+}
+
+// ===============
+
+const mainObject = {
+    a: 1,
+    b: 2,
+    c: 3,
+};
+const objectForInteration = {
+    first: 1,
+    second: 3,
+    third: 3,
+};
+
+function compareTwoObjects(firstObj, secondObj) {
+    
+    let theFirstOne = [];
+    let theSecondOne = [];
+
+    for (let key in firstObj) {
+        theFirstOne.push(firstObj[key]);
+    }
+    for (let i in secondObj) {
+        theSecondOne.push(secondObj[i]);
+    }
+
+    return theFirstOne.join(', ') == theSecondOne.join(', ') ? true : false;
+
+}
+
+console.log(compareTwoObjects(mainObject, objectForInteration));
