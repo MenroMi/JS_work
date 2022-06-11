@@ -21,6 +21,60 @@ const movieDB = {
         "Ла-ла лэнд",
         "Одержимость",
         "Скотт Пилигрим против..."
-    ]
+    ],
+
+    removeAdd() {
+        const blockAds = document.querySelector('.promo__adv'),
+        picAds = blockAds.querySelectorAll('img[src]'),
+        titleAds = blockAds.querySelector('.promo__adv-title').remove();   
+        
+        picAds[0].remove();
+        picAds[1].remove();
+        picAds[2].remove();
+    
+        return titleAds;        
+    },
+
+    replaceCategory() {
+        const category = document.querySelector('.promo__genre');
+        
+        category.textContent = 'ДРАМА';
+        return category;
+
+
+    },
+
+    replaceBackImg() {
+
+        const backImg = document.querySelector('.promo__bg');
+        backImg.style.background = "url('/projects/project_2/img/bg.jpg')";
+        // backImg.style.backgroundPosition = 'top';
+
+        return backImg;
+
+    },
+
+    sortFilms() {
+        
+        const films = document.querySelectorAll(".promo__interactive-item"),
+        sortingFilms = this.movies.sort();
+
+
+        for(let i = 0; i < sortingFilms.length; i++) {
+            films[i].textContent = `${i+1}. ${sortingFilms[i]}`;
+            films[i].insertAdjacentHTML('beforeend', "<div class='delete'></div>");
+        }
+
+        // films.forEach((item, i) => {
+        //     item[i].textContent = `${sortingFilms[i]}`;
+
+        // });
+
+    }    
+
 };
 
+movieDB.removeAdd();
+movieDB.replaceCategory();
+movieDB.replaceBackImg();
+movieDB.sortFilms();
