@@ -87,3 +87,15 @@ function getTotalProgressByRecursion(data) {
 const result = getTotalProgressByRecursion(students);
 
 console.log(result[0]/result[1]);
+
+// ======================
+
+function factorial(n) {
+    if (!Number.isInteger(n) || typeof(n) === 'string' || n < 0) {
+        return 'Error';
+    } else {
+        return (n === 0 || n < 0) ? 1 : n * factorial(n - 1);
+    }
+}
+
+console.log(factorial(5));

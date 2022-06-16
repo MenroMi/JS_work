@@ -20,7 +20,7 @@ const movieDB = {
         "Лига справедливости",
         "Ла-ла лэнд",
         "Одержимость",
-        "Скотт Пилигрим против..."
+        "Скотт Пилигрим против...",
     ],
 
     removeAdd() {
@@ -61,19 +61,42 @@ const movieDB = {
 
 
         for(let i = 0; i < sortingFilms.length; i++) {
-            films[i].innerHTML = `${i+1}. ${sortingFilms[i]}`;
-            films[i].insertAdjacentHTML('beforeend', "<div class='delete'></div>");
+            if (sortingFilms[i].length >= 21) {
+                films[i].innerHTML = `${i+1}. ${sortingFilms[i].slice(0,21)+"..."}`;
+                films[i].insertAdjacentHTML('beforeend', "<div class='delete'></div>");
+            } else {
+                films[i].innerHTML = `${i+1}. ${sortingFilms[i]}`;
+                films[i].insertAdjacentHTML('beforeend', "<div class='delete'></div>");
+            }
         }
 
         // this.movies.forEach((item, i) => {
         //     films[i].innerHTML = `${i+1}. ${item} <div class="delete"></div>`;
         // });
 
-    }    
+    },
+    addFilm() {
 
+        const filmInput = document.querySelector(".add > input.adding__input"),
+              acceptBtn = document.querySelector('.add > button'),
+              objListFilm = document.querySelector(".promo__interactive-list");
+    
+        acceptBtn.addEventListener('click', function() {
+            let inputVal = filmInput.value;
+            movieDB.movies.push(inputVal);
+            objListFilm.insertAdjacentHTML('beforeend',`<li class="promo__interactive-item">${inputVal}<div class="delete"></div></li>`);
+        });
+        acceptBtn.addEventListener('click', () => {
+            return movieDB.sortFilms();
+        });
+
+    },
+    
 };
 
 movieDB.removeAdd();
 movieDB.replaceCategory();
 movieDB.replaceBackImg();
 movieDB.sortFilms();
+movieDB.addFilm();
+

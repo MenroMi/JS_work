@@ -1,3 +1,21 @@
-const btn = document.querySelectorAll('button');
+const films = {
+    movies: [
+        'Matrix',
+        'Joker',
+]};
 
-console.log(btn);
+
+function addFilm() {
+
+    const filmInput = document.querySelector("#myInput"),
+          acceptBtn = document.querySelector('button');
+
+    acceptBtn.addEventListener('click', function() {
+        let inputVal = filmInput.value;
+        films.movies.push(inputVal);
+        console.log(films.movies);
+    });
+
+}
+
+addFilm();
