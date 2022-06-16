@@ -61,12 +61,17 @@ const movieDB = {
 
 
         for(let i = 0; i < sortingFilms.length; i++) {
+
             if (sortingFilms[i].length >= 21) {
+            
                 films[i].innerHTML = `${i+1}. ${sortingFilms[i].slice(0,21)+"..."}`;
                 films[i].insertAdjacentHTML('beforeend', "<div class='delete'></div>");
+            
             } else {
+
                 films[i].innerHTML = `${i+1}. ${sortingFilms[i]}`;
                 films[i].insertAdjacentHTML('beforeend', "<div class='delete'></div>");
+            
             }
         }
 
@@ -86,6 +91,7 @@ const movieDB = {
             movieDB.movies.push(inputVal);
             objListFilm.insertAdjacentHTML('beforeend',`<li class="promo__interactive-item">${inputVal}<div class="delete"></div></li>`);
         });
+
         acceptBtn.addEventListener('click', () => {
             return movieDB.sortFilms();
         });
