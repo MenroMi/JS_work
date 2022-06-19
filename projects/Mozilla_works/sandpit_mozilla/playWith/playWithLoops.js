@@ -280,3 +280,18 @@ another: for (let k = 2; k <= numbForNaturalNum; k++) {
     console.log(k);
 }
 
+// ==========================
+
+const animals = ['lion','duck','horse'];
+const autos = ['bmw','mercedes','opel'];
+
+const zoo = [...animals, ...autos];
+
+console.log(zoo[1]);
+
+
+const arrayNumb = [1, 3, 15555, -354, -1, 45];
+
+const smallestInt = Math.min(...arrayNumb);
+const bigestInt = Math.max(...arrayNumb); // za pomoca spread możemy sprawdzić max i min liczbę
+console.log(smallestInt, bigestInt);

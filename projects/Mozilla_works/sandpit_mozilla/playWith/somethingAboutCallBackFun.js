@@ -13,11 +13,11 @@ learnJs('JavaScript', done); // została przekazana wyłącznie funkcja bez wywo
 function lang(example) {
     console.log(`Я учу: ${example}`);
   }
-  function learnJS(lang, callback) {
+function learnJS(lang, callback) {
     lang('JavaScript');
     callback();
   }
-  function done() {
+function done() {
     console.log('Я прошел этот урок!');
   }
    
