@@ -24,7 +24,7 @@ function sortStudentsByGroups(arr) {
 
   arr = arr.sort();
 
-  let stringos = 'Оставшиеся студенты: ';
+  let restStu = 'Оставшиеся студенты: ';
   let res = [[], [], []];
   
   arr.forEach((item, i) => {
@@ -35,12 +35,12 @@ function sortStudentsByGroups(arr) {
     } else if (i <= 8) {
       res[2].push(item);
     } else {
-      stringos += `${item}, `;
+      restStu += `${item}, `;
     }
 });
 
-  stringos = stringos.length > 21 ? stringos = stringos.trim().slice(0, -1) : stringos += '-';
-  res.push(stringos);
+  restStu = restStu.length > 21 ? restStu = restStu.trim().slice(0, -1) : restStu += '-';
+  res.push(restStu);
 
   return res;
 }

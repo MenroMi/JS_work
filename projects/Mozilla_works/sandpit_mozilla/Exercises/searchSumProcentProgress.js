@@ -1,3 +1,6 @@
+// We must calculate common numbers of progress, which are located in arrays on one first object ( we can do it wth loop or recursion);
+
+
 let students = {
     js: [{
         name: 'John',
