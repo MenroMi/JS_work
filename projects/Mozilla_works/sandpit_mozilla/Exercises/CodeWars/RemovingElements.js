@@ -21,6 +21,7 @@ function removeEverySecElem(arr) {
 
 console.log(removeEverySecElem(exampleArray));
 
+
 //===================
 
 
