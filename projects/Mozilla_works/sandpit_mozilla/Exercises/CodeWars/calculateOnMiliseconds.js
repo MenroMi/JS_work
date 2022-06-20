@@ -19,3 +19,14 @@ function clock(h, m, s) {
 }
 
 console.log(clock(1, 0, 1));
+
+
+
+const stringToNumber = function(str){
+
+    let res = str - 0;
+
+    return res, typeof(res);
+  };
+
+console.log(stringToNumber('1234'));
