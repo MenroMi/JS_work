@@ -129,3 +129,7 @@ while (i != 10) {
 
 console.log((6.35).toFixed(20));
 console.log((1.35 * 10).toFixed(20));
+
+// ==================
+
+console.log(15e-5);
