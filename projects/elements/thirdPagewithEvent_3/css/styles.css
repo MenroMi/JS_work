@@ -1,0 +1,27 @@
+button {
+	width: 80px;
+	height: 30px;
+	margin-top: 10px;
+	border: none;
+	border-radius: 8px;
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+	outline: none;
+}
+
+button:hover {
+	transform: scale(0.95);
+}
+
+.overlay {
+	background-color: pink;
+	width: 200px;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+  }
+a {
+	display: block;
+	margin-top: 30px;
+  }
