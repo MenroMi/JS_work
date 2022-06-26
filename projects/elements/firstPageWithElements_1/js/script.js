@@ -24,4 +24,25 @@ hearts.forEach(item => {
 const heartOne = document.querySelector('.heart'); // zwraca pierwszy spotkany element na stronie 
 console.log(heartOne);
 
+// ===============
+
+/*
+dynamiczne dodawanie scriptów
+*/
+function loadScript(src) {
+
+    const script = document.createElement('script');
+
+    script.src = src;
+    script.async = false;
+    
+    document.body.append(script);
+    
+}
+
+loadScript("js/test.js");
+loadScript("js/some.js");
+
+// ===============
+
 
