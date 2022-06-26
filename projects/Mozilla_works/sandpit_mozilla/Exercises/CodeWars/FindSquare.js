@@ -7,15 +7,14 @@ Complete the findNextSquare method that finds the next integral perfect square a
 If the parameter is itself not a perfect square then -1 should be returned. You may assume the parameter is non-negative.
 */
 
-const findNextSquare = (sq) => {
+function findNextSquare(sq) {
+  
+    let sqrt = Math.floor((Math.sqrt(sq))); // we find square root and calculate floor value
+  
+    return sqrt**2 !== sq ?  -1 : Math.pow(++sqrt,2); // here we checked square of the number, and take
+    // answer that this is perfect square or not
 
-    if ((Math.floor((Math.sqrt(sq)))**2 !== sq)) {
-        return -1;
-    } else {
-        let square = Math.floor((Math.sqrt(sq) +1));
-        return square**2;
-    }
-};
+}
 
 console.log(findNextSquare(319225));
 
