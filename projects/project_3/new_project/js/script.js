@@ -37,12 +37,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
     tabsParent.addEventListener('click', (e) => {
         const target = e.target;
-        // console.log(e);
+        // console.log(target);
         if (target && target.classList.contains('tabheader__item')) {
             tabs.forEach((tab, i) => {
                 if (target == tab) {
-                    console.log(tab);
-                    console.log(target);
+                    // console.log(tab);
+                    // console.log(target);
                     hideTabContent();
                     showTabContent(i);
                 }

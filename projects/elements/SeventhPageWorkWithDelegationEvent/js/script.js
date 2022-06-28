@@ -26,12 +26,15 @@ window.addEventListener('DOMContentLoaded', () => {
     // });
     
 
+
     function classBlack(i = 0) {
 
         if (!btns[i].classList.contains('black')) {
             btns[i].classList.add('black');
+            setTimeout(() => {btns[i].classList.remove('black');}, 100);
         } else {
             btns[i].classList.remove('black');
+            setTimeout(() => {btns[i].classList.add('black');}, 100);
         }
     
     }
