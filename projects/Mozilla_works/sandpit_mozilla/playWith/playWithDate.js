@@ -89,19 +89,86 @@ console.log(`Second function: ${arrTimeSecond} milliseconds`);
 // =====================
 
 const dateExer = new Date(2012, 0, 3);
-dateExer.setUTCDate(3);
+// dateExer.setUTCDate(3);
 console.log(dateExer);
 console.log(dateExer.getDate());
 
-function getWeekDay(date) {
+function getWeekDayIndex() { 
+    /*
+    funkcja w której randomowo wybieramy liczbę(do 7), która później za pomocą indeksu 
+    wyciąga dzień tygodnia z tablicy
+    */
+    let ourDate = Math.floor(Math.random() * 7);
 
     const arrDay = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+    return arrDay[ourDate];
 
-    for ( let i = 0; i < arrDay.length; i++) {
-       if (date.getDate() == i) {
-        return arrDay[i];
-       }
-    }
 }
 
-console.log(getWeekDay(dateExer));
+// console.log(getWeekDayIndex());
+
+// for (let i = 0; i < 10; i++) {
+//     console.log(getWeekDayIndex());
+// }
+
+function getWeekDayInteration() {
+        /*
+    funkcja w której randomowo wybieramy liczbę(do 7), która później za pomocą iteracji 
+    wyciąga dzień tygodnia z tablicy
+    */
+    let ourDate = Math.floor(Math.random() * 7);
+
+    const arrDay = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+    for ( let i = 0; i <= arrDay.length; i++) {
+        if (ourDate == i) {
+         return arrDay[i];
+        }
+     }
+}
+
+function bench(f) {
+    /*
+    tworzymy benchmark, wyliczając prędkość działania w millisekundach
+    */
+    let start = Date.now();
+    let some = 0;
+    for (let i = 0; i < 100000; i++) {
+        some += f;
+    }
+    let end = Date.now();
+    
+    return end - start;
+
+}
+
+let funcFirst = [];
+let funcSecond = [];
+
+for ( let i = 0; i < 10; i++) {
+    /*
+    robimy kilka potwórzeń dla większej prawidłowości naszego wyliczenia
+    */
+    funcFirst.push(bench(getWeekDayIndex));
+    funcSecond.push(bench(getWeekDayInteration));
+}
+
+console.log(`first: ${funcFirst} millisec`);
+console.log(`second: ${funcSecond} millisec`);
+
+function addAllResult(arr) {
+    /*
+    szukamy róźnicę między prędkościami
+    */
+    let res = 0;
+
+    for ( let numb of arr) {
+        res += numb;
+    }
+    return res;
+}
+
+console.log(`first result: ${addAllResult(funcFirst)} in milliseconds.`);
+console.log(`second result: ${addAllResult(funcSecond)} in milliseconds.`);
+console.log(`different result: ${addAllResult(funcSecond) - addAllResult(funcFirst)} in milliseconds.`);
+
+// ====================

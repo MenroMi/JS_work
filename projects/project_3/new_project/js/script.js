@@ -1,5 +1,8 @@
 window.addEventListener('DOMContentLoaded', () => {
 
+
+    // TABS
+
     const tabs = document.querySelectorAll('.tabheader__item'),
         tabsContent = document.querySelectorAll('.tabcontent'),
         tabsParent = document.querySelector('.tabheader__items');
@@ -49,5 +52,14 @@ window.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+    // TIMER
+
+    const deadline = "2022-07-05"; // data początkowa
+
+    function // różnica między datą aktualną i datą końcową
+
+
+
 
 });
