@@ -172,3 +172,7 @@ console.log(`second result: ${addAllResult(funcSecond)} in milliseconds.`);
 console.log(`different result: ${addAllResult(funcSecond) - addAllResult(funcFirst)} in milliseconds.`);
 
 // ====================
+
+const time = "2022-07-03";
+const deadline = Date.parse(time);
+console.log(deadline);
