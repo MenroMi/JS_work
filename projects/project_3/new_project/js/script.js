@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function getTimeRemainig(endtime) {
         // różnica między datą aktualną i datą końcową
-        const t = Date.parse(endtime) - Date.parse(new Date()),
+        const t = Date.parse(endtime) - Date.now(),
               days = Math.floor(t / (1000 * 60 * 60 * 24)),
         // w nawiasach sprawdzamy ile mamy millisekund w dobie
         // 1 000 ms = 1 s
@@ -128,3 +128,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 });
+
+const time = "2022-07-05";
+
+const diffTime = Date.parse(time) - Date.now();
+console.log(Math.floor((diffTime / (1000 * 3600) % 24)));
+console.log(Math.floor(diffTime / (1000 * 3600 * 24)));

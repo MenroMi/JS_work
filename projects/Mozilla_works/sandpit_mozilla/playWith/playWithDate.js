@@ -173,6 +173,89 @@ console.log(`different result: ${addAllResult(funcSecond) - addAllResult(funcFir
 
 // ====================
 
-const time = "2022-07-03";
-const deadline = Date.parse(time);
-console.log(deadline);
+const actualTime = new Date(),
+      startTime = new Date(0),
+      time = Date.now(); // czas w millisekundach
+
+
+console.log(Date.parse(actualTime));
+console.log(startTime);
+console.log(time);
+
+// =====================
+
+startTime.setDate(50);
+console.log(startTime);
+
+// =====================
+
+const datePast = "1938-05-04";
+
+console.log(actualTime.getTime());
+console.log(actualTime.getUTCHours());
+console.log(actualTime.getTimezoneOffset());
+
+// =====================
+
+const pastTime = "1999-01-01",
+      actuallyTime = Date.now();
+
+
+function takeDate(date1, date2) {
+    const t = date2 - Date.parse(date1),
+          days = Math.floor((t / (1000 * 60 * 60 * 24))),
+          hours = Math.floor((t / (1000 * 60 * 60) % 24)),
+          minutes = Math.floor(((t / 3600) % 60)),
+          seconds = Math.floor(((t / 1000) % 60));
+
+    return {
+        'days': days,
+        'hours': hours,
+        'minutes': minutes,
+        'seconds': seconds
+    };
+}
+
+
+console.log(takeDate(pastTime, actuallyTime));
+
+
+// ===================
+
+
+function addZero(t) {
+    return (t < 10) ? `0${t}` : t;
+}
+
+const d1 = new Date("1954-04-05T21:30:00.000Z");
+console.log(d1);
+
+function getDateNow(t) {
+
+    const arrDate = [];
+    let date = ``;
+
+    const year = t.getFullYear(),
+          month = t.getMonth(),
+          days = t.getDate(),
+          hours = t.getHours(),
+          minutes = t.getMinutes();
+          
+    arrDate.push(year);      
+    arrDate.push(month);
+    arrDate.push(days);
+    arrDate.push(hours);
+    arrDate.push(minutes);
+
+    arrDate.forEach((time, i) => {
+        if (i >= 3 && i < 4) {date += `${addZero(time)}:`;
+        } else if (i < 3){date += `${addZero(time)}.`;
+        } else {date += `${addZero(time)}`;}
+        
+    });
+
+    return date;
+
+}
+
+console.log(getDateNow(d1));
