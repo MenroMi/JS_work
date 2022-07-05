@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // TIMER
 
-    const deadline = "2022-07-04T23:58:59.000Z"; // data końcowa
+    const deadline = "2022-07-05T23:58:59.000Z"; // data końcowa
 
     function getTimeRemainig(endtime) {
         // różnica między datą aktualną i datą końcową
@@ -81,12 +81,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
         return {
             'total': t, // millisekundy ogółem
+            // 
             'days': days,
             'hours': hours,
             'minutes': minutes,
             'seconds': seconds,
         };
     }
+
+    // console.log(getTimeRemainig(deadline));
 
     function getZero(numb) {
         if (numb >= 0 && numb < 10) {
@@ -129,8 +132,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 });
 
-const time = "2022-07-05";
+// const time = "2022-07-05";
 
-const diffTime = Date.parse(time) - Date.now();
-console.log(Math.floor((diffTime / (1000 * 3600) % 24)));
-console.log(Math.floor(diffTime / (1000 * 3600 * 24)));
+// const diffTime = Date.parse(time) - Date.now();
+// console.log(Math.floor((diffTime / (1000 * 3600) % 24)));
+// console.log(Math.floor(diffTime / (1000 * 3600 * 24)));

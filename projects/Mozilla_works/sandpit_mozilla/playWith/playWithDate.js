@@ -259,3 +259,45 @@ function getDateNow(t) {
 }
 
 console.log(getDateNow(d1));
+
+
+//==========================
+
+const futureDate = "2022-07-07";
+
+function diffTimeCalculate(endtime) {
+    const t = Date.parse(endtime) - Date.now(),
+          days = Math.floor((t / (1000 * 60 * 60 * 24))),
+          hours = Math.floor((t / (1000 * 60 * 60) % 24)),
+          minutes = Math.floor((t / (1000 * 60) % 60)),
+          seconds = Math.floor(((t / 1000) % 60));
+    
+    return {
+        "total": t,
+        "days": days,
+        "hours": hours,
+        "minutes": minutes,
+        "seconds": seconds
+    };  
+}
+
+
+function intervalTime(anothertime) {
+ 
+    const timer = setInterval(update, 1000);
+
+    // update();
+
+    function update() {
+
+        const t = diffTimeCalculate(anothertime);
+        console.log(t);
+    
+        if (t.minutes < 30 ) {
+            clearInterval(timer);
+        }
+    }
+
+}
+
+intervalTime(futureDate);
