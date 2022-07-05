@@ -1,6 +1,7 @@
-const futureDate = "2023-07-05";
+const futureDate = "2023-07-05",
+      addMonth = new Date().getMonth();
 
-function diffTimeCalculate(endtime) {
+function diffTimeCalculate(endtime, month) {
     const t = Date.parse(endtime) - Date.now(),
           days = Math.floor((t / (1000 * 60 * 60 * 24))),
           hours = Math.floor((t / (1000 * 60 * 60) % 24)),
@@ -9,6 +10,7 @@ function diffTimeCalculate(endtime) {
     
     return {
         "total": t,
+        "months": month,
         "days": days,
         "hours": hours,
         "minutes": minutes,
@@ -21,9 +23,10 @@ function addZero(timer) {
 }
 
 
-function setdiffTime(endtime) {
+function setdiffTime(endtime, month) {
  
     const timer = document.querySelector('.until'),
+          months = timer.querySelector('.until__event--month'),
           days = timer.querySelector('.until__numeric--days'),
           hours = timer.querySelector('.until__numeric--hours'),
           minutes = timer.querySelector('.until__numeric--minutes'),
@@ -34,8 +37,11 @@ function setdiffTime(endtime) {
 
     function update() {
 
-        const t = diffTimeCalculate(endtime);
-
+        const t = diffTimeCalculate(endtime, month);
+        const arrMonths = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.' ];
+        
+        
+        months.innerHTML = arrMonths[t.months];
         days.innerHTML = addZero(t.days);
         hours.innerHTML = addZero(t.hours);
         minutes.innerHTML = addZero(t.minutes);
@@ -48,4 +54,4 @@ function setdiffTime(endtime) {
 
 }
 
-setdiffTime(futureDate);
+setdiffTime(futureDate, addMonth);
