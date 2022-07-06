@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // TIMER
 
-    const deadline = "2022-07-05T23:58:59.000Z"; // data końcowa
+    const deadline = "2022-07-07T23:58:59.000Z"; // data końcowa
 
     function getTimeRemainig(endtime) {
         // różnica między datą aktualną i datą końcową
