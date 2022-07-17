@@ -30,15 +30,22 @@ console.log(width, height);
 // console.log(style.width);
 
 
-console.log(box.getBoundingClientRect());
+console.log(box.getBoundingClientRect()); // show all coordinates of element
 
 btn.addEventListener("click", () => {
-    if (box.scrollTop > 100) {
-        console.log(box.scrollTop);
-        box.scrollTop = 0;
-    } else {
-        box.scrollTop = 950;
-    }
+    /*
+    console.log(box.scrollHeight - box.scrollTop - box.clientHeight); // find "scrollBottom"
+    */
+
+    console.log(box.offsetWidth - box.clientWidth); // return your width of scrollbar
+
+
+    // if (box.scrollTop > 100) {
+    //     console.log(box.scrollTop);
+    //     box.scrollTop = 0;
+    // } else {
+    //     box.scrollTop = 950;
+    // }
 });
 
 
@@ -59,3 +66,4 @@ function addRemoveHeight() {
 btn.addEventListener("click", addRemoveHeight);
 
 */
+

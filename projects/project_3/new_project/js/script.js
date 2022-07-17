@@ -55,29 +55,41 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // TIMER
 
-    const deadline = "2022-07-07T23:58:59.000Z"; // data końcowa
+    const deadline = "2022-07-20T23:58:59.000Z"; // data końcowa
 
     function getTimeRemainig(endtime) {
         // różnica między datą aktualną i datą końcową
-        const t = Date.parse(endtime) - Date.now(),
-              days = Math.floor(t / (1000 * 60 * 60 * 24)),
-        // w nawiasach sprawdzamy ile mamy millisekund w dobie
-        // 1 000 ms = 1 s
-        // 60 000 ms = 1 m
-        // 3 600 000 ms = 1 h
-        // 86 400 000 ms = 1 day
+        let t = Date.parse(endtime) - Date.now(),
+              days, hours, minutes, seconds;
+        
+        if (t <= 0) {
 
-        // dzieląc wybraną datę końcową na dobę w millisekundach
-        // dostajemy ilość dni do zakończenia akcji
-        // Math.floor usuwa liczby po przecinku za pomocą zaokrąglenia
+            days = 0;
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
 
-              hours = Math.floor((t / (1000 * 60 * 60) % 24)),
-        // dzięki operacji matematycznej dostajemy ilość godzin do zakończenia
-              minutes = Math.floor((t / (1000 * 60) % 60)),
-        // tutaj minuty
-              seconds = Math.floor((t / 1000) % 60);
-        // tutaj sekundy
-        // priorytet należy do dzielenia, później modulo
+        } else {
+            days = Math.floor(t / (1000 * 60 * 60 * 24)),
+            // w nawiasach sprawdzamy ile mamy millisekund w dobie
+            // 1 000 ms = 1 s
+            // 60 000 ms = 1 m
+            // 3 600 000 ms = 1 h
+            // 86 400 000 ms = 1 day
+    
+            // dzieląc wybraną datę końcową na dobę w millisekundach
+            // dostajemy ilość dni do zakończenia akcji
+            // Math.floor usuwa liczby po przecinku za pomocą zaokrąglenia
+    
+                  hours = Math.floor((t / (1000 * 60 * 60) % 24)),
+            // dzięki operacji matematycznej dostajemy ilość godzin do zakończenia
+                  minutes = Math.floor((t / (1000 * 60) % 60)),
+            // tutaj minuty
+                  seconds = Math.floor((t / 1000) % 60);
+            // tutaj sekundy
+            // priorytet należy do dzielenia, później modulo
+
+        }
 
         return {
             'total': t, // millisekundy ogółem
@@ -129,6 +141,59 @@ window.addEventListener('DOMContentLoaded', () => {
     setClock('.timer', deadline);
 
 
+    // MODAL WINDOW
+
+    let modalsOpen = document.querySelectorAll("[data-modal]"),
+        modalClose = document.querySelector("[data-close]"),
+        modalWin = document.querySelector('.modal'),
+        modalBcgColor = document.querySelector('.modal__dialog');
+
+
+    modalsOpen.forEach(modal=> {
+
+        modal.addEventListener('click', () => {
+
+            modalWin.classList.add('show');
+            document.body.style.overflow = 'hidden';
+
+        });
+
+    });
+
+    modalBcgColor.addEventListener('click', () => {
+        modalWin.classList.remove('show');
+        document.body.style.overflow = ''; 
+    });
+
+    modalClose.addEventListener('click', () => {
+        modalWin.classList.remove('show');
+        document.body.style.overflow = '';
+    });
+
+
+
+
+
+    /*
+    modalWin.style.display = 'none';
+    console.log(modalWin);
+    console.log(modalClose);
+
+    modalsOpen.forEach((modal) => {
+
+        modal.addEventListener("click", () => {
+
+            modalWin.style.display = "";
+            
+            if (!modalWin.style.display) {
+
+
+            }
+        });
+
+
+    });
+    */
 
 });
 
