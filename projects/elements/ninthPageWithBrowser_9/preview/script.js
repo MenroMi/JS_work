@@ -9,6 +9,7 @@ wraz padding'ami, lecz bez border, scroll oraz margin;
 
 // const width = box.clientWidth, 
 //       height = box.clientHeight;
+
 */
 /*
 
@@ -19,17 +20,42 @@ wraz ze scroll'em, border oraz margin ( padding również)
         height = box.offsetHeight;
 */
 
-const width = box.scrollWidth,
-      height = box.scrollHeight;
+const width = box.clientWidth,
+      height = box.scrollHeight,
+      style = window.getComputedStyle(box);
+
 
 console.log(width, height);
 
+// console.log(style.width);
+
+
+console.log(box.getBoundingClientRect());
+
 btn.addEventListener("click", () => {
-    box.style.height = box.scrollHeight + 'px';
-    console.log(box.scrollTop);
+    if (box.scrollTop > 100) {
+        console.log(box.scrollTop);
+        box.scrollTop = 0;
+    } else {
+        box.scrollTop = 950;
+    }
 });
 
-console.log(box.getBoundingClientRect().top);
 
-const style = window.getComputedStyle(box );
-console.log(style.display);
+/*
+
+// expansion and curl scroll height
+
+function addRemoveHeight() {
+    if (height !== box.offsetHeight) {
+        box.style.height = height + 'px';
+        console.log(height,box.clientHeight);
+    } else {
+        box.style.height = 400 + 'px';
+        console.log(height,box.offsetHeight);
+    }
+}
+
+btn.addEventListener("click", addRemoveHeight);
+
+*/

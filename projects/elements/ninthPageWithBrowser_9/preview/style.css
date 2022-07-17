@@ -6,7 +6,7 @@ box-sizing: border-box;
   margin: 0 auto;
   margin-top: 50px;
   padding: 10px;
-  border: 1px dashed black;
+  /* border: 1px dashed black; */
 }
 button {
   width: 100px;
