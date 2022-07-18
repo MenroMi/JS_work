@@ -143,45 +143,72 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // MODAL WINDOW
 
-    let modalsOpen = document.querySelectorAll("[data-modal]"),
+    const modalsOpen = document.querySelectorAll("[data-modal]"),
         modalClose = document.querySelector("[data-close]"),
-        modalWin = document.querySelector('.modal'),
-        modalBcgColor = document.querySelector('.modal__content');
+        modalWin = document.querySelector('.modal');
 
+    
+    function closeWindow() {
+
+        modalWin.classList.remove('show');
+        document.body.style.overflow = '';
+
+    }
+
+    function openWindow() {
+
+        modalWin.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        // clearInterval(modalTimerId);
+
+    }
+
+    // const modalTimerId = setTimeout(openWindow, 100000); // when we want open modal window
+    //after some time, and clear interval later
 
     modalsOpen.forEach(modal => {
 
-        modal.addEventListener('click', () => {
-
-            modalWin.classList.add('show');
-            document.body.style.overflow = 'hidden';
-
-            
-
-        });
+        modal.addEventListener('click', openWindow);
 
     });
 
     modalWin.addEventListener('click', (event) => {
 
         const target = event.target;
-
-        if (target === modalWin) {
-            modalWin.classList.remove('show');
-            document.body.style.overflow = '';
-        }
+        if (target === modalWin) {closeWindow();}
 
     });
+
+    modalClose.addEventListener('click', closeWindow);
+
+    document.addEventListener('keydown', (event) => {
+
+        if (event.keyCode === 27 && modalWin.classList.contains('show')) {closeWindow();}
+
+    });
+
+    function showModalByScroll() {
+
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight ) {
+            // można dodać -1 px w przypadku gdy nie pojawia się modalne okno
+            openWindow();
+            window.removeEventListener('scroll',showModalByScroll);
+        }
+
+    }
+        window.addEventListener('scroll',showModalByScroll);
+
+    
+
+    // if (document.documentElement.scrollHeight == document.documentElement.clientHeight) {openWindow();}
+    // }, );
 
     // modalBcgColor.addEventListener('click', () => {
     //     modalWin.classList.remove('show');
     //     document.body.style.overflow = ''; 
     // });
 
-    modalClose.addEventListener('click', () => {
-        modalWin.classList.remove('show');
-        document.body.style.overflow = '';
-    });
+
 
 
 
