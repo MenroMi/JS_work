@@ -146,24 +146,37 @@ window.addEventListener('DOMContentLoaded', () => {
     let modalsOpen = document.querySelectorAll("[data-modal]"),
         modalClose = document.querySelector("[data-close]"),
         modalWin = document.querySelector('.modal'),
-        modalBcgColor = document.querySelector('.modal__dialog');
+        modalBcgColor = document.querySelector('.modal__content');
 
 
-    modalsOpen.forEach(modal=> {
+    modalsOpen.forEach(modal => {
 
         modal.addEventListener('click', () => {
 
             modalWin.classList.add('show');
             document.body.style.overflow = 'hidden';
 
+            
+
         });
 
     });
 
-    modalBcgColor.addEventListener('click', () => {
-        modalWin.classList.remove('show');
-        document.body.style.overflow = ''; 
+    modalWin.addEventListener('click', (event) => {
+
+        const target = event.target;
+
+        if (target === modalWin) {
+            modalWin.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
     });
+
+    // modalBcgColor.addEventListener('click', () => {
+    //     modalWin.classList.remove('show');
+    //     document.body.style.overflow = ''; 
+    // });
 
     modalClose.addEventListener('click', () => {
         modalWin.classList.remove('show');
