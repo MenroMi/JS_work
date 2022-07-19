@@ -361,3 +361,36 @@ function Admin(name, isAdmin) {
 const userName = new Admin('John', true);
 
 console.log(userName.isAdmin);
+
+// ==================
+
+
+const objectTest = {
+  name: 'John',
+  surname: 'Derby',
+  age: 38,
+  hobbies: {
+    sport: 'tenis',
+    computer: 'games',
+    home: 'books'
+  }
+};
+
+const newObject = {};
+
+for ( let key in objectTest) {
+  if (typeof(objectTest[key]) == 'object') {
+    newObject[key] = objectTest[key];
+    for (let i in objectTest[key]) {
+      newObject[key][i] = objectTest[key][i];
+     }
+  } else {
+    console.log("--" + typeof(objectTest[key]));
+    newObject[key] = objectTest[key];
+  }
+}
+
+newObject.hobbies.bed = 'sleep';
+
+console.log(objectTest);
+console.log(newObject);
