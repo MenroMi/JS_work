@@ -123,3 +123,23 @@ const userInfo = {};
 [userInfo.name, userInfo.secondName] = 'Alex Holand'.split(' ');
 
 console.log(userInfo);
+
+// ===========================
+
+const animals = ['cats', 'dogs', 'lions', 'crocydile', {birds: ['орёл', 'ястреб', 'воробей']}],
+      people = ['man', 'woman', 'girls'];
+
+const arrFirst = animals;
+const arrSec = animals;
+
+console.log(animals.concat(people));
+
+// ==================
+
+
+let lengths = ["Bilbo", "Gandalf", "Nazgul"].map(item => item.length);
+console.log(lengths);
+
+
+
+
