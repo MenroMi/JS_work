@@ -133,3 +133,30 @@ console.log((1.35 * 10).toFixed(20));
 // ==================
 
 console.log(15e-5);
+
+// ===================
+
+let bigNumb = 57.2e6; // 57 200 000
+
+console.log(bigNumb);
+
+// ===================
+
+let floatNumb = 689e-6; // 0.000689
+
+console.log(floatNumb);
+
+// ===================
+
+const numbForString = '500 px';
+const floatNumbForString = '56.4vw';
+
+console.log(parseInt(numbForString));
+console.log(typeof(parseInt(numbForString)));
+
+
+console.log(parseFloat(floatNumbForString));
+
+console.log(Math.floor((Math.random() * 100)));
+
+console.log(Math.pow(5, 3));

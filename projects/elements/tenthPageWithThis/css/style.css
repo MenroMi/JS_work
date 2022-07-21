@@ -1,0 +1,15 @@
+button {
+    background-color: pink;
+    height: 100px;
+    width: 200px;
+    border: 1px solid palegreen;
+    border-radius: 5%;
+    cursor: pointer;
+}
+button:hover {
+    transform: scale(0.9);
+}
+
+.another-color {
+    background-color:azure;
+}

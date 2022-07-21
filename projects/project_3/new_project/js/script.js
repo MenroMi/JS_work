@@ -195,6 +195,7 @@ window.addEventListener('DOMContentLoaded', () => {
             window.removeEventListener('scroll',showModalByScroll);
         }
 
+        
     }
         window.addEventListener('scroll',showModalByScroll);
 
