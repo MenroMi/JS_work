@@ -38,6 +38,8 @@ function eventBtns(event) {
     btns.forEach((btn, i) => {
         if (target == btn) {
             changeColorBtn(i);
+            console.log(target);
+            console.log(btn);
         }
     });
 }

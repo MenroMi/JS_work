@@ -1,11 +1,18 @@
-button {
+div {
     background-color: pink;
     height: 100px;
-    width: 200px;
+    width: 500px;
     border: 1px solid palegreen;
     border-radius: 5%;
-    cursor: pointer;
 }
+
+button {
+    
+    height: 60px;
+    width: 100px;
+    background-color:green;
+}
+
 button:hover {
     transform: scale(0.9);
 }
