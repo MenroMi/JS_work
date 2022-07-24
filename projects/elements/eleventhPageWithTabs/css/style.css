@@ -34,7 +34,7 @@
 
 .tab__item.is-active {
     transition:.3s all;
-    border-bottom: 2px solid palegoldenrod;
+    /* border-bottom: 2px solid palegoldenrod; */
     font-weight: 800;
     font-size: 18px;
 }
@@ -47,6 +47,29 @@
     border-radius: 5px;
 }
 
+.first-color {
+    background-color: #ffcad4;
+}
+
+.second-color {
+    background-color: #a3b18a;
+}
+
+.third-color {
+    background-color: #a9def9;
+}
+
+.border-f-color {
+    border-bottom: 2px solid #ffcad4;
+}
+
+.border-s-color {
+    border-bottom: 2px solid #a3b18a;
+}
+
+.border-t-color {
+    border-bottom: 2px solid #a9def9;
+}
 
 .show {
     display: block;
