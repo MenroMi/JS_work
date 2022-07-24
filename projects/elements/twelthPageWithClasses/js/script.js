@@ -99,11 +99,13 @@ function Teacher(first, last, age, gender, interests, subject) {
 
 }
 
-console.log(Person);
-console.log(Teacher);
-
 Teacher.prototype = Object.create(Person.prototype); // argumentem jest obiekt, który stanie prototypem
 // dla nowego obiektu
+
+const john = new Teacher('John', 'Bond', 34, 'M', 'bowling', 'history');
+
+john.greeting();
+console.log(john.subject);
 
 // console.log(Person);
 // console.log(Teacher);
@@ -116,4 +118,5 @@ const obj = {
     Person,
 };
 
+// =========================
 
