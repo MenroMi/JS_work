@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // TIMER
 
-    const deadline = "2022-07-20T23:58:59.000Z"; // data końcowa
+    const deadline = "2022-07-31T23:58:59.000Z"; // data końcowa
 
     function getTimeRemainig(endtime) {
         // różnica między datą aktualną i datą końcową
@@ -181,9 +181,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     modalClose.addEventListener('click', closeWindow);
 
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener('keydown', (event) => { // modal window to close when push 'ESC'
 
-        if (event.keyCode === 27 && modalWin.classList.contains('show')) {closeWindow();}
+        if (event.keyCode === 27 && modalWin.classList.contains('show')) {closeWindow();} // unique code "esc" key 
 
     });
 
@@ -236,10 +236,102 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     */
 
-});
+
 
 // const time = "2022-07-05";
 
 // const diffTime = Date.parse(time) - Date.now();
 // console.log(Math.floor((diffTime / (1000 * 3600) % 24)));
 // console.log(Math.floor(diffTime / (1000 * 3600 * 24)));
+
+// ======================
+
+//  CARDS
+
+    const menu = document.querySelector('.menu'),
+          field = menu.querySelector('.menu__field'),
+          container = field.querySelector('.container');
+
+    class Items {
+        constructor() {
+
+        }
+    }
+
+    class Vege {
+        constructor(subtitle, descr, total) {
+            this.subtitle = subtitle;
+            this.descr = descr;
+            this.total = total;
+        }
+
+        addVegeItem() {
+            const imgForVege = document.querySelector('[alt="vegy"]');
+            const divMain = document.createElement('div'),
+                  h3SubTitle = document.createElement('h3'),
+                  divDescr = document.createElement('div'),
+                  divDivider = document.createElement('div'),
+                  divPrice = document.createElement('div'),
+                  divCost = document.createElement('div'),
+                  divTotal = document.createElement('div');
+            
+            divMain.classList.add('menu__item');
+            
+            h3SubTitle.classList.add('menu__item-subtitle');
+            h3SubTitle.innerHTML = `${this.subtitle}`;
+
+            divDescr.classList.add('menu__item-descr');
+            divDescr.innerHTML = `${this.descr}`;
+
+            divDivider.classList.add('menu__item-divider');
+
+            divPrice.classList.add('menu__item-price');
+
+            divCost.classList.add('menu__item-cost');
+            divCost.textContent = 'Цена:';
+
+            divTotal.classList.add('menu__item-total');
+            divTotal.innerHTML = `<span>${this.total}</span> грн/день`;
+
+            container.append(divMain);
+            divMain.append(imgForVege);
+            divMain.append(h3SubTitle);            
+            divMain.append(divDescr); 
+            divMain.append(divDivider);
+            divMain.append(divPrice);
+            divPrice.append(divCost);
+            divPrice.append(divTotal);
+
+        }
+
+
+    }
+
+    class Elite {
+        constructor(subtitle, descr, total) {
+            super();
+            this.subtitle = subtitle;
+            this.descr = descr;
+            this.total = total;
+        }
+    }
+
+    class Post {
+        constructor(subtitle, descr, total) {
+            super();
+            this.subtitle = subtitle;
+            this.descr = descr;
+            this.total = total;
+        }
+
+
+
+    }
+
+
+    const slim = new Vege('Меню "Slim"', `Slim to program dla osób, które chcą zredukować masę ciała. Daje poczucie lekkości. Długotrwałe stosowanie diety niskoenergetycznej polecamy najpierw skonsultować z naszym dietetykiem.`, 250);
+
+    console.log(slim);
+    slim.addVegeItem();
+
+});
