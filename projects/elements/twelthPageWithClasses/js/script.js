@@ -1,3 +1,5 @@
+"use strict";
+
 class Cars { // class == function => true
     constructor(mark, model, fuel) {
         this.mark = mark;
@@ -120,3 +122,36 @@ const obj = {
 
 // =========================
 
+let user = {
+    firstName: "Вася",
+    sayHi() {
+      console.log(`Привет, ${this.firstName}!`);
+    }
+};
+  
+const func = user.sayHi.bind(user);
+
+setTimeout(func, 1000); /*
+Это произошло потому, что setTimeout получил функцию sayHi отдельно от объекта user (именно здесь функция и потеряла контекст).
+*/
+
+// two solutions
+
+/*
+
+FIRST
+
+setTimeout(function() {
+    user.sayHi();
+}, 1000);
+
+Теперь код работает корректно, так как объект user достаётся из замыкания, а затем вызывается его метод sayHi.
+*/
+
+/*
+SECOND
+
+const func = user.sayHi.bind(user);
+setTimeout(func, 1000);
+
+*/
