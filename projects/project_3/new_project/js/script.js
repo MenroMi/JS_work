@@ -163,7 +163,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    // const modalTimerId = setTimeout(openWindow, 100000); // when we want open modal window
+    // const modalTimerId = setTimeout(openWindow, 1000); // when we want open modal window
     //after some time, and clear interval later
 
     modalsOpen.forEach(modal => {
@@ -253,9 +253,39 @@ window.addEventListener('DOMContentLoaded', () => {
           container = field.querySelector('.container');
 
     class Items {
-        constructor() {
+        constructor(src, alt, title, descr, price, parentSelector) {
+            this.src = src;
+            this.alt = alt;            
+            this.title = title;
+            this.descr = descr;
+            this.price = price; // (1) (5)
+            this.parent = document.querySelector(parentSelector);
+            this.transfer = 27;
+            this.changeToUAH(); // (2)
+        }
+
+        changeToUAH() { // podaną metodę możemy wywołać również w kosntruktorze (3)
+            this.price = this.price * this.transfer; // konwerter walut (powiedzmy);    (4) 
+        }
+
+        render() {
+            const element = document.createElement('div');
+            element.classList.add('menu__item');
+            element.innerHTML = `<img src=${this.src} alt=${this.alt}>
+            <h3 class="menu__item-subtitle">${this.title}</h3>
+            <div class="menu__item-descr">${this.descr}</div>
+            <div class="menu__item-divider"></div>
+            <div class="menu__item-price">
+                <div class="menu__item-cost">Цена:</div>
+                <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+            </div>
+            `;
+
+            this.parent.append(element);
+
 
         }
+
     }
 
     class Vege {
@@ -266,8 +296,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         addVegeItem() {
-            const imgForVege = document.querySelector('[alt="vegy"]');
+
             const divMain = document.createElement('div'),
+                  imgForVege = document.createElement('img'),
                   h3SubTitle = document.createElement('h3'),
                   divDescr = document.createElement('div'),
                   divDivider = document.createElement('div'),
@@ -276,6 +307,8 @@ window.addEventListener('DOMContentLoaded', () => {
                   divTotal = document.createElement('div');
             
             divMain.classList.add('menu__item');
+
+            imgForVege.src = 'img/tabs/vegy.jpg';
             
             h3SubTitle.classList.add('menu__item-subtitle');
             h3SubTitle.innerHTML = `${this.subtitle}`;
@@ -308,30 +341,77 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     class Elite {
-        constructor(subtitle, descr, total) {
-            super();
+        constructor(image, alt, subtitle, descr, total) {
+            this.image = image;
+            this.alt = alt;
             this.subtitle = subtitle;
             this.descr = descr;
             this.total = total;
         }
+
+        addCardElite() {
+
+            const divMain = document.createElement('div');
+
+            divMain.classList.add('menu__item');
+            divMain.innerHTML = `<img src="${this.image}" alt="${this.alt}">
+            <h3 class="menu__item-subtitle">${this.subtitle}</h3>
+            <div class="menu__item-descr">${this.descr}</div>
+            <div class="menu__item-divider"></div>
+            <div class="menu__item-price">
+                <div class="menu__item-cost">Цена:</div>
+                <div class="menu__item-total"><span>${this.total}</span> грн/день</div>
+            </div>`;
+
+            container.append(divMain);
+
+        }
+
     }
 
     class Post {
-        constructor(subtitle, descr, total) {
-            super();
-            this.subtitle = subtitle;
+        constructor(src, alt, title, descr, price) {
+            this.src = src;
+            this.alt = alt;            
+            this.title = title;
             this.descr = descr;
-            this.total = total;
+            this.price = price;
         }
 
-
+        // for fun
 
     }
 
+    // const obj = new Items(...args);
+    // obj.render();
 
-    const slim = new Vege('Меню "Slim"', `Slim to program dla osób, które chcą zredukować masę ciała. Daje poczucie lekkości. Długotrwałe stosowanie diety niskoenergetycznej polecamy najpierw skonsultować z naszym dietetykiem.`, 250);
+        
 
-    console.log(slim);
-    slim.addVegeItem();
+    new Items(
+        "img/tabs/vegy.jpg",
+        "vegy",
+        'Меню "Фитнес"',
+        'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+        5,
+        ".menu .container"
+    ).render(); // jednorazowe wywołanie konstruktora
+
+    new Items(
+        "img/tabs/elite.jpg",
+        "elite",
+        'Меню “Премиум”',
+        'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
+        9,
+        ".menu .container"
+    ).render(); // jednorazowe wywołanie konstruktora
+
+    new Items(
+        "img/tabs/post.jpg",
+        "post",
+        'Меню "Постное"',
+        'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
+        14,
+        ".menu .container"
+    ).render(); // jednorazowe wywołanie konstruktora
 
 });
