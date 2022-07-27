@@ -39,6 +39,21 @@ noise.addElement();
 const alfabet = new Elements('h5', 'h2', 'div');
 alfabet.addElement();
 
+let count = 0;
+
+function timer() {
+  if (count < 20) {
+    count++;
+    console.log(count);
+  } else {
+    clearInterval(timer);
+  }
+}
+
+setInterval(timer, 500);
+
+
+
 // const 
 //       divBack = document.createElement('div'),
 //       btn = document.createElement('button'),
