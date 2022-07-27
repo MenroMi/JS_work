@@ -17,22 +17,27 @@ class Elements {
   constructor(elem, classes, parentElems) {
     this.elem = elem;
     this.classes = classes;
-    this.parentElems = parentElems;
+    this.parentElems = document.querySelector(parentElems);
   }
 
   addElement() {
-    console.log(this.elem);
-    console.log(this.classes);
-    console.log(this.parentElems);
+    const div = document.createElement(this.elem);
+
+    if (this.classes == "main__div") {
+      document.body.append(div);
+    } else {
+      this.parentElems.append(div);
+    }
+
   }
 
 }
 
-const alfabet = new Elements('h1', 'h2', 'h3');
-alfabet.addElement();
-
-const noise = new Elements('hmm', 'h1', 'h33');
+const noise = new Elements('div', 'main__div', 'body');
 noise.addElement();
+
+const alfabet = new Elements('h5', 'h2', 'div');
+alfabet.addElement();
 
 // const 
 //       divBack = document.createElement('div'),
