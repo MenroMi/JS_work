@@ -21,23 +21,54 @@ class Elements {
   }
 
   addElement() {
-    const div = document.createElement(this.elem);
+    const element = document.createElement(this.elem);
 
-    if (this.classes == "main__div") {
-      document.body.append(div);
+    if (this.classes == ".square") {
+      element.classList.add('square');
+      document.body.append(element);
     } else {
-      this.parentElems.append(div);
+      this.parentElems.append(element);
     }
 
   }
 
 }
 
-const noise = new Elements('div', 'main__div', 'body');
+const noise = new Elements('div', '.square', 'body');
 noise.addElement();
 
-const alfabet = new Elements('h5', 'h2', 'div');
-alfabet.addElement();
+const firstBtn = new Elements('button', '', 'div');
+firstBtn.addElement();
+const secondBtn = new Elements('button', '', 'div');
+secondBtn.addElement();
+
+
+const divParent = document.querySelector('div'),
+      btns = document.querySelectorAll('button');
+
+
+function changeColorBtns(numb = 0) {
+  if(btns[numb].style.backgroundColor == '') {
+    btns[numb].style.backgroundColor = 'red';
+  } else {
+    btns[numb].style.backgroundColor = '';
+  }
+}
+
+divParent.addEventListener('click', (event) => {
+  const target = event.target;
+  btns.forEach((btn, i) => {
+    if ( target == btn) {
+      changeColorBtns(i);
+    }
+  });
+
+});
+
+
+
+
+// ===================
 
 let count = 0;
 
