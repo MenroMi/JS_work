@@ -269,9 +269,11 @@ window.addEventListener('DOMContentLoaded', () => {
             this.price = this.price * this.transfer; // konwerter walut (powiedzmy);    (4) 
         }
 
+
         render() {
             const element = document.createElement('div');
             
+
             if (this.classes.length !== 0) {
                 this.classes.forEach(className => element.classList.add(className));
             } else {

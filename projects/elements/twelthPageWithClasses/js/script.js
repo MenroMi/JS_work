@@ -152,6 +152,11 @@ setTimeout(function() {
 SECOND
 
 const func = user.sayHi.bind(user);
+
+func();
+
 setTimeout(func, 1000);
+
+Здесь func.bind(user) – это «связанный вариант» func, с фиксированным this=user.
 
 */
