@@ -1,6 +1,7 @@
 "use strict";
 
-const now = new Date(0);
+const now = new Date(0); //new Date(year, month, date, hours, minutes, seconds, ms)
+// przy stworzeniu daty ręcznie - pierwsze dwa argumenty są obowiązkowe(rok, miesiąc)
 
 // =================
 // we can assign new property for our date

@@ -57,6 +57,7 @@ function changeColorBtns(numb = 0) {
 
 divParent.addEventListener('click', (event) => {
   const target = event.target;
+  console.log(event);
   btns.forEach((btn, i) => {
     if ( target == btn) {
       changeColorBtns(i);
@@ -68,20 +69,31 @@ divParent.addEventListener('click', (event) => {
 
 
 
+// let count = 0;
+// const timer = setInterval(function run() {
+//   count++;
+//   console.log(count);
+//   if ( count == 5) {
+//     setTimeout(() => {clearInterval(timer); console.log('stop it');});
+//   }
+// }, 1000);
+
+
 // ===================
 
-let count = 0;
+// let count = 0;
 
-function timer() {
-  if (count < 20) {
-    count++;
-    console.log(count);
-  } else {
-    clearInterval(timer);
-  }
-}
+// function timer() {
+//   if (count < 20) {
+//     count++;
+//     console.log(count);
+//     setTimeout(timer, 2000);
+//   } else {
+//     clearInterval(timer);
+//   }
+// }
 
-setInterval(timer, 500);
+// setTimeout(timer, 2000);
 
 
 
