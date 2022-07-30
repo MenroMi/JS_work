@@ -1,3 +1,5 @@
+"use strict";
+
 const btnsParent = document.querySelector('.tabsheader'),
       btns = document.querySelectorAll('.tab_item'),
       tabsContent = document.querySelectorAll('.content_item');
