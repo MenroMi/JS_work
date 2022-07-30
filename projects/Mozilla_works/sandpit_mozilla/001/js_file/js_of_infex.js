@@ -67,7 +67,12 @@ divParent.addEventListener('click', (event) => {
 });
 
 
+const time = Date.now();
+const timeNew = new Date();
 
+console.log(timeNew.getTimezoneOffset());
+console.log(timeNew.getTime());
+console.log(+timeNew);
 
 // let count = 0;
 // const timer = setInterval(function run() {
