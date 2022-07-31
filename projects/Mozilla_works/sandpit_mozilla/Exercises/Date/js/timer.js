@@ -1,4 +1,4 @@
-const futureDate = "2022-07-29T23:59:59.000Z",
+const futureDate = "2022-08-02T23:59:59.000Z",
       addMonth = new Date().getMonth(),
       addDay = new Date().getDate();
 
@@ -45,7 +45,7 @@ function setdiffTime(selector, endtime, month, day) {
           minutes = timer.querySelector('.until__numeric--minutes'),
           seconds = timer.querySelector('.until__numeric--seconds'),          
           intervalTime = setInterval(update, 1000); // żeby startował setinterval trzeba przekazać
-          // link na funkcję - nie wywołować
+          // link na funkcję - nie wywoływać
 
     update();
 

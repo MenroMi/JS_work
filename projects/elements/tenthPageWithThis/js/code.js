@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 
 const btn = document.querySelector('button');
@@ -36,3 +36,47 @@ btn.addEventListener('click', () => { // undefined
 
 
 // ======================================
+
+
+function checkThis(a, b) {
+    console.log(this);
+    function sum() {
+        console.log(this);
+        return a + b;
+    }
+    
+    sum();
+}
+
+checkThis(5, 10);
+
+// ========================
+
+const obj = {
+    name: `${prompt('Hello?', '')}`,
+    sayMyName() {
+        console.log(`Yeah. Hello, ${this.name} :)`);
+    }
+};
+
+obj.sayMyName();
+
+
+const numbers = {
+    a: 10,
+    b: 15,
+    calc() {
+        function sum() {
+            console.log(this);
+        }
+        sum();
+    }
+};
+
+numbers.calc();
+
+// ================================
+
+
+
+
