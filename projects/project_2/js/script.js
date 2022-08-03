@@ -112,7 +112,7 @@ const movieDB = {
         const btnDelete = document.querySelectorAll(".delete");
 
         if (btnDelete) {
-            btnDelete.forEach((trash, i) => {
+            btnDelete.forEach((trash) => {
 
                 trash.addEventListener('click', () => {
                     
