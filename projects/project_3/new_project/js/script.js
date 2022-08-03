@@ -428,4 +428,69 @@ window.addEventListener('DOMContentLoaded', () => {
         "menu__item"
     ).render(); // jednorazowe wywołanie konstruktora
 
+    // ============================
+    // Forms
+
+    const forms = document.querySelectorAll('form'); // 1
+
+    const message = { // 18
+        loading: 'Загрузка',
+        success: "Спасибо! Скоро с вами свяжутся!",
+        failure: 'Что-то пошло не так'
+    }; // magazyn wiadomości, które chcemy pokazać klientowi
+
+    
+    forms.forEach(item => { // 16
+
+        postData(item); // 17
+
+    });
+
+    function postData(form) { // 2
+   
+        form.addEventListener('submit', (e) => { // 3
+            e.preventDefault(); // 5 dodajemy na samym początku, by usunąć za każdym razem
+            // odświeżanie strony po wysłaniu formy
+
+            const statusMessage = document.createElement('div'); // 15
+            statusMessage.classList.add('status');
+            statusMessage.textContent = message.loading; 
+            form.append(statusMessage); 
+
+            const request = new XMLHttpRequest(); // 6
+            request.open('POST', 'server.php'); // 7
+
+            request.setRequestHeader('Content-type', 'application/json'); // 8 
+            
+            const formData = new FormData(form); // 9
+
+            // ==============
+            // json-formats
+            const obj = {};
+            formData.forEach(function(value, key) {
+                obj[key] = value;
+            });
+
+            const json = JSON.stringify(obj);
+            // ===============
+            request.send(json); // 10
+
+            request.addEventListener('load', () => { // 11
+
+                if (request.status === 200){ // 12
+                    console.log(request.response); // 13
+                    statusMessage.textContent = message.success;
+                    form.reset(); // resetowanie formy
+                    setTimeout(() => {
+                        statusMessage.remove();
+                    }, 2000);
+                } else { //14
+                    statusMessage.textContent = message.failure;
+
+                }
+            });
+
+        });
+    }
+
 });
