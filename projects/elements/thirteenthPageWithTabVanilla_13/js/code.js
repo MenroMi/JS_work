@@ -43,3 +43,4 @@ btnsParent.addEventListener('click', (event) => {
     });
 
 });
+
