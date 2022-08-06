@@ -477,7 +477,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             request.addEventListener('load', () => { // 11
 
-                if (request.status === 200){ // 12
+                if (request.status == 200){ // 12
                     console.log(request.response); // 13
                     statusMessage.textContent = message.success;
                     form.reset(); // resetowanie formy
