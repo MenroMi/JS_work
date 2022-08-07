@@ -144,20 +144,19 @@ window.addEventListener('DOMContentLoaded', () => {
     // MODAL WINDOW
 
     const modalsOpen = document.querySelectorAll("[data-modal]"),
-        modalClose = document.querySelector("[data-close]"),
-        modalWin = document.querySelector('.modal');
+          modalWindow = document.querySelector('.modal');
 
     
     function closeWindow() {
 
-        modalWin.classList.remove('show');
+        modalWindow.classList.remove('show');
         document.body.style.overflow = '';
 
     }
 
     function openWindow() {
 
-        modalWin.classList.add('show');
+        modalWindow.classList.add('show');
         document.body.style.overflow = 'hidden';
         // clearInterval(modalTimerId);
 
@@ -172,18 +171,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    modalWin.addEventListener('click', (event) => {
+    modalWindow.addEventListener('click', (event) => {
 
         const target = event.target;
-        if (target === modalWin) {closeWindow();}
+        if (target === modalWindow || target.getAttribute("data-close") == '') {closeWindow();}
 
     });
 
-    modalClose.addEventListener('click', closeWindow);
-
     document.addEventListener('keydown', (event) => { // modal window to close when push 'ESC'
 
-        if (event.keyCode === 27 && modalWin.classList.contains('show')) {closeWindow();} // unique code "esc" key 
+        if (event.keyCode === 27 && modalWindow.classList.contains('show')) {closeWindow();} // unique code "esc" key 
 
     });
 
@@ -434,7 +431,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const forms = document.querySelectorAll('form'); // 1
 
     const message = { // 18
-        loading: 'Загрузка',
+        loading: 'img/form/spinner.svg', // żeby dodać zdjęcie
         success: "Спасибо! Скоро с вами свяжутся!",
         failure: 'Что-то пошло не так'
     }; // magazyn wiadomości, które chcemy pokazać klientowi
@@ -452,10 +449,14 @@ window.addEventListener('DOMContentLoaded', () => {
             e.preventDefault(); // 5 dodajemy na samym początku, by usunąć za każdym razem
             // odświeżanie strony po wysłaniu formy
 
-            const statusMessage = document.createElement('div'); // 15
-            statusMessage.classList.add('status');
-            statusMessage.textContent = message.loading; 
-            form.append(statusMessage); 
+            const statusMessage = document.createElement('img'); // 15
+            statusMessage.setAttribute('src', "img/form/spinner.svg");
+            // statusMessage.src = message.loading; // można wykonać w taki sposób
+            statusMessage.style.cssText = `
+                display: block;
+                margin: 0 auto;
+            `;
+            form.insertAdjacentElement('afterend', statusMessage);
 
             const request = new XMLHttpRequest(); // 6
             request.open('POST', 'server.php'); // 7
@@ -479,18 +480,52 @@ window.addEventListener('DOMContentLoaded', () => {
 
                 if (request.status == 200){ // 12
                     console.log(request.response); // 13
-                    statusMessage.textContent = message.success;
+                    showThanksModal(message.success);
+                    // statusMessage.textContent = message.success;
                     form.reset(); // resetowanie formy
-                    setTimeout(() => {
-                        statusMessage.remove();
-                    }, 2000);
+                    statusMessage.remove();
                 } else { //14
-                    statusMessage.textContent = message.failure;
+                    showThanksModal(message.failure);
+                    // statusMessage.textContent = message.failure;
 
                 }
             });
 
         });
+    }
+
+    // THANKS MODAL
+
+    function openModal() {
+        modalWindow.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+
+    function showThanksModal(message) { // chcemy pokazać nowe modalnie okno po wysłaniu form
+        // nie usunąć, tylko ukryć poprzednie i uwidocznić nowo stworzone;
+        const prevModalDialog = document.querySelector('.modal__dialog');
+        // wyciąga się to okno, które ma być poźniej ukryte.
+        // podczas usuwania, przy powtórnej próbie włączyć modalne okno, nie otworzy się
+
+        prevModalDialog.classList.add('hide'); //ukrywamy modalne okno
+        openModal(); // odpowiada za włączenie modalnych okien
+        const thanksModal = document.createElement('div'); // tworzymy nowe okno modalne (dynamiczne tworzony element)
+        thanksModal.classList.add('modal__dialog'); // dodaje się do nowego okna ten sam styl. Taka zamiana jednego modalnego okna na drugie
+        thanksModal.innerHTML = `
+            <div class="modal__content">
+                <div class="modal__close" data-close>×</div>
+                <div class="modal__title">${message}</div>
+            </div>
+        `; // dodajemy elementy, które mają się wyświetlić po kliknięciu
+        
+        document.querySelector('.modal').append(thanksModal); // dodajemy do HTML-dokumentu
+        setTimeout(() => {
+            thanksModal.remove();
+            prevModalDialog.classList.remove('hide');
+            closeWindow();
+        }, 4000);
+
     }
 
 });
