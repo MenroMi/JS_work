@@ -170,3 +170,44 @@ test(2000).then(() => {
 test(3000).then(() => {
     console.log('done - 3000 ms.');
 });
+
+// ==============
+
+let variable = false;
+
+if (!variable) {
+    console.log('Done');
+} else {
+    console.log('wrong');
+}
+
+// ==================
+
+const myBag = 50;
+
+const buyProducts = new Promise((resolve, reject) => {
+    const goods = {
+        "apple": 2,
+        "oil": 5,
+        "pizza": 6,
+        "ice cream": 4,
+        "chips": 3,
+        total() {
+            let total = this.apple + this.chips + this.oil + this["ice cream"] + this.pizza;
+            return total;
+        }
+    };
+
+    if (myBag >= goods.total()) {
+        resolve();
+    } else {
+        const reason = new Error('i dont enough money...');
+        reject(reason);
+    }
+
+}).then(() => {
+    console.log('Yeah, today i will have party!');
+}).catch((error) => {
+    console.log(error);
+});
+
