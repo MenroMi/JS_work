@@ -183,7 +183,7 @@ if (!variable) {
 
 // ==================
 
-const myBag = 50;
+const myBag = 6;
 
 const buyProducts = new Promise((resolve, reject) => {
     const goods = {
@@ -211,3 +211,37 @@ const buyProducts = new Promise((resolve, reject) => {
     console.log(error);
 });
 
+
+// ============
+
+
+const p = new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+
+        console.log("Загрузка...");
+        
+        setTimeout(() => {
+            
+            const obj = {
+                name: 'John',
+                isAdmin: true
+            };
+
+            console.log("...");
+            resolve(obj);
+        
+        }, 2000);   
+
+    }, 2000);
+
+}).then((person) => {
+    console.log(person);
+    return person;
+}).then((person) => {
+    return new Promise((resolve, reject) => {
+        resolve(person);
+    }); 
+}).then((person) => {
+        console.log(person);
+});

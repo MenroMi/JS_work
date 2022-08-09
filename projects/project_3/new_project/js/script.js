@@ -457,38 +457,34 @@ window.addEventListener('DOMContentLoaded', () => {
                 margin: 0 auto;
             `;
             form.insertAdjacentElement('afterend', statusMessage);
-
-            const request = new XMLHttpRequest(); // 6
-            request.open('POST', 'server.php'); // 7
-
-            request.setRequestHeader('Content-type', 'application/json'); // 8 
             
             const formData = new FormData(form); // 9
 
-            // ==============
-            // json-formats
+            // // ==============
+            // // json-formats
             const obj = {};
             formData.forEach(function(value, key) {
                 obj[key] = value;
             });
 
-            const json = JSON.stringify(obj);
-            // ===============
-            request.send(json); // 10
+            
+            // // ===============
 
-            request.addEventListener('load', () => { // 11
-
-                if (request.status == 200){ // 12
-                    console.log(request.response); // 13
-                    showThanksModal(message.success);
-                    // statusMessage.textContent = message.success;
-                    form.reset(); // resetowanie formy
-                    statusMessage.remove();
-                } else { //14
-                    showThanksModal(message.failure);
-                    // statusMessage.textContent = message.failure;
-
-                }
+            fetch('server.php', { // where?
+                method: "POST", // how
+                headers: {'Content-type': 'application/json'}, // how
+                body: JSON.stringify(obj) // what exactly?
+            })
+            .then(data => data.text())
+            .then((data) => {
+                console.log(data);
+                showThanksModal(message.success);
+                statusMessage.remove();
+            }).catch(() => {
+                showThanksModal(message.failure);
+                statusMessage.textContent = message.failure;
+            }).finally(() => {
+                form.reset();
             });
 
         });
