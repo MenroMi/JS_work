@@ -524,4 +524,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    fetch("https://jsonplaceholder.typicode.com/users/", {
+        method: "POST",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify({
+            name: 'Kiryl',
+            age: '23',
+            user: true
+        })
+    })
+    .then(response => response.text()).then(json => console.log(json));
+
+    // ==========================
+
+    
+
+
 });

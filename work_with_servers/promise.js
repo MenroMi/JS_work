@@ -245,3 +245,7 @@ const p = new Promise((resolve, reject) => {
 }).then((person) => {
         console.log(person);
 });
+
+// ===================
+
+
