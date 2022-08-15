@@ -393,37 +393,54 @@ window.addEventListener('DOMContentLoaded', () => {
     // const obj = new Items(...args);
     // obj.render();
 
+    const getData = async (url) => {
+        const getReq = await fetch(url);
+
+        if (!getReq.ok) {
+            throw new Error(`Could not fetch ${url}, status: ${getReq.status}`);
+        }
+
+        return await getReq.json(); // skoro json format jest na backendzie strony
+        // to przy odbieraniu danych w json-formacie  metoda json() parsuje w obiekt js
+    };
+
+    getData('http://localhost:3000/menu')
+        .then(data => {
+            data.forEach(({img, altimg, title, descr, price}) => {
+                new Items(img, altimg, title, descr, price, ".menu .container").render();
+            });
+        });
         
 
-    new Items(
-        "img/tabs/vegy.jpg",
-        "vegy",
-        'Меню "Фитнес"',
-        'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
-        5,
-        ".menu .container",
-        "menu__item"
-    ).render(); // jednorazowe wywołanie konstruktora
+    // new Items(
+    //     "img/tabs/vegy.jpg",
+    //     "vegy",
+    //     'Меню "Фитнес"',
+    //     'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+    //     5,
+    //     ".menu .container",
+    //     "menu__item"
+    // ).render(); // jednorazowe wywołanie konstruktora
 
-    new Items(
-        "img/tabs/elite.jpg",
-        "elite",
-        'Меню “Премиум”',
-        'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
-        9,
-        ".menu .container",
-        "menu__item"
-    ).render(); // jednorazowe wywołanie konstruktora
+    // new Items(
+    //     "img/tabs/elite.jpg",
+    //     "elite",
+    //     'Меню “Премиум”',
+    //     'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
+    //     9,
+    //     ".menu .container",
+    //     "menu__item"
+    // ).render(); // jednorazowe wywołanie konstruktora
 
-    new Items(
-        "img/tabs/post.jpg",
-        "post",
-        'Меню "Постное"',
-        'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
-        14,
-        ".menu .container",
-        "menu__item"
-    ).render(); // jednorazowe wywołanie konstruktora
+    // new Items(
+    //     "img/tabs/post.jpg",
+    //     "post",
+    //     'Меню "Постное"',
+    //     'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
+    //     14,
+    //     ".menu .container",
+    //     "menu__item"
+    // ).render(); // jednorazowe wywołanie konstruktora
 
     // ============================
     // Forms
@@ -443,16 +460,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    const postData = (url, data) => {
-        const res = fetch(url, {
+    const postData = async (url, data) => { // dodajemy kolejkę async
+        const res = await fetch(url, { // najpierw ten kod
             method: "POST", // how
             headers: {'Content-type': 'application/json'}, // how
             body: data   // what exactly? 
         });
 
-        return res.json();
+        return await res.json(); // dopiero później ten jako drugi
 
     };
+
+
 
     function bindPostData(form) { // 2
    
@@ -473,20 +492,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
             // // ==============
             // // json-formats
-            const obj = {};
-            formData.forEach(function(value, key) {
-                obj[key] = value;
-            });
+            // const obj = {};
+            // formData.forEach(function(value, key) {
+            //     obj[key] = value;
+            // });
+            const json = JSON.stringify(Object.fromEntries(formData.entries())); // make json format
 
             
             // // ===============
 
-            fetch('server.php', { // where?
-                method: "POST", // how
-                headers: {'Content-type': 'application/json'}, // how
-                body: JSON.stringify(obj) // what exactly?
-            })
-            .then(data => data.text())
+            postData('http://localhost:3000/requests', json)
             .then((data) => {
                 console.log(data);
                 showThanksModal(message.success);
@@ -548,9 +563,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // ==========================
 
-    fetch('http://localhost:3000/menu')
-    .then(data => data.json())
-    .then(res => console.log(res)); 
+    // fetch('http://localhost:3000/menu')
+    // .then(data => data.json())
+    // .then(res => console.log(res)); 
 
 
 });
