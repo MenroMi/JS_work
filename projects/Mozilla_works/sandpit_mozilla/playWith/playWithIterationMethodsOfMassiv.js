@@ -61,25 +61,29 @@ P.S. Это довольно типичная задача в программи
 function findFilmsMoreThanEight(arr) {
     // return arr.filter(film => film.rating >= 8); // 1
     // return arr.map(film => film.name).reduce((sum, current) => `${sum}, ${current}`); 2
+    // return arr.reduce((acc, curr) =>`${typeof(acc) === 'object' ? acc.name : acc}, ${curr.name}`);
 }
 
 function checkFilms(arr) {
 
     console.log(arr.every(film => "id" in film));
-
+    console.log(arr);
 
 }
 
-function setFilmdIds(arr, checkFilms) {
+function setFilmdIds(arr) {
 
-    let tranformedArray = [];
+    arr.map((item, i) => item.id = i);
+    
+    return checkFilms(arr);
+    // let tranformedArray = [];
 
-    for ( let i = 0; i < arr.length; i++) {
-        arr[i].id = i;
-        tranformedArray.push(arr[i]);
-    }
+    // for ( let i = 0; i < arr.length; i++) {
+    //     arr[i].id = i;
+    //     tranformedArray.push(arr[i]);
+    // }
 
-    checkFilms(tranformedArray);
+    // checkFilms(tranformedArray);
 
 }
 
@@ -89,31 +93,62 @@ setFilmdIds([
     {name: "Batmam", rating: 10}, 
     {name: "Superman", rating: 5}, 
     {name: "Ironman", rating: 3}
-], checkFilms);
+]);
 
 
-/*
-2) Напишите функцию showListOfFilms, которая будет принимать этот же массив, а возвращать будет строку, которая содержит названия фильмов через запятую.
-
-Пример:
-
-showListOfFilms(films) => "Titanic, Die hard 5, Matrix, Some bad film"
-*/
-
-/*
-3) Напишите функцию setFilmsIds, которая будет принимать этот же массив, а возвращать будет такой же массив с фильмами, но у каждого фильма будет новое поле id. Значение этого поля установите по нумерации фильма.
-
-Пример:
-
-setFilmsIds(films)  => [   { name: 'Titanic', rating: 9, id: 0 },   { name: 'Die hard 5', rating: 5, id: 1 },   { name: 'Matrix', rating: 8, id: 2 },   { name: 'Some bad film', rating: 4, id: 3 } ]
-*/
+const store = {
+    chips: 5,
+    cola: 3,
+    friuts: 8,
+    milk: 2
+};
 
 
-/*
-4) Запишите результат предыдущей функции в переменную tranformedArray. Напишите функцию checkFilms, которая будет проверять, что в каждом из фильмов есть поле id. Если это так - функция возвращает true. Очевидно, что сейчас условие должно выполняться, если мы передаем checkFilms(tranformedArray); :)
-*/
+function calcValues(obj) {
 
-
-function mapMethod(arr) {
+    let values = Object.entries(obj).flat(1);
     
+    return values.map(item => typeof item == "number" ? item + 2 : item);
+
+
 }
+
+console.log(calcValues(store));
+
+// ==================================
+
+
+const funds = [
+    {amount: -1400},
+    {amount: 2400},
+    {amount: -1000},
+    {amount: 500},
+    {amount: 10400},
+    {amount: -11400}
+];
+
+const getPositiveIncomeAmount = arr => {
+    return arr.map(item => item.amount >= 0 ? item.amount : 0).reduce((sum, curr) => sum + curr, 0);
+};
+
+
+const  getTotalIncomeAmount = data => {
+    
+    return data.some(item => item.amount <= 0) == true ? data.map(d => d.amount).reduce((sum, curr) => sum + curr, 0) : getPositiveIncomeAmount(data);
+    
+    // return data.some(item => item.amount <= 0 ? item.amount.reduce((sum, curr) => sum + curr) : getPositiveIncomeAmount(data));
+};
+
+console.log(getTotalIncomeAmount(funds));
+
+const res = arr => {
+    
+let result = 0;
+
+for ( let i = 0; i < arr.length; i++) {
+    result += arr[i].amount;
+}
+return result;
+};
+
+console.log(res(funds));
