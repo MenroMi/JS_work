@@ -296,99 +296,99 @@ window.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    class Vege {
-        constructor(subtitle, descr, total) {
-            this.subtitle = subtitle;
-            this.descr = descr;
-            this.total = total;
-        }
+    // class Vege {
+    //     constructor(subtitle, descr, total) {
+    //         this.subtitle = subtitle;
+    //         this.descr = descr;
+    //         this.total = total;
+    //     }
 
-        addVegeItem() {
+    //     addVegeItem() {
 
-            const divMain = document.createElement('div'),
-                  imgForVege = document.createElement('img'),
-                  h3SubTitle = document.createElement('h3'),
-                  divDescr = document.createElement('div'),
-                  divDivider = document.createElement('div'),
-                  divPrice = document.createElement('div'),
-                  divCost = document.createElement('div'),
-                  divTotal = document.createElement('div');
+    //         const divMain = document.createElement('div'),
+    //               imgForVege = document.createElement('img'),
+    //               h3SubTitle = document.createElement('h3'),
+    //               divDescr = document.createElement('div'),
+    //               divDivider = document.createElement('div'),
+    //               divPrice = document.createElement('div'),
+    //               divCost = document.createElement('div'),
+    //               divTotal = document.createElement('div');
             
-            divMain.classList.add('menu__item');
+    //         divMain.classList.add('menu__item');
 
-            imgForVege.src = 'img/tabs/vegy.jpg';
+    //         imgForVege.src = 'img/tabs/vegy.jpg';
             
-            h3SubTitle.classList.add('menu__item-subtitle');
-            h3SubTitle.innerHTML = `${this.subtitle}`;
+    //         h3SubTitle.classList.add('menu__item-subtitle');
+    //         h3SubTitle.innerHTML = `${this.subtitle}`;
 
-            divDescr.classList.add('menu__item-descr');
-            divDescr.innerHTML = `${this.descr}`;
+    //         divDescr.classList.add('menu__item-descr');
+    //         divDescr.innerHTML = `${this.descr}`;
 
-            divDivider.classList.add('menu__item-divider');
+    //         divDivider.classList.add('menu__item-divider');
 
-            divPrice.classList.add('menu__item-price');
+    //         divPrice.classList.add('menu__item-price');
 
-            divCost.classList.add('menu__item-cost');
-            divCost.textContent = 'Цена:';
+    //         divCost.classList.add('menu__item-cost');
+    //         divCost.textContent = 'Цена:';
 
-            divTotal.classList.add('menu__item-total');
-            divTotal.innerHTML = `<span>${this.total}</span> грн/день`;
+    //         divTotal.classList.add('menu__item-total');
+    //         divTotal.innerHTML = `<span>${this.total}</span> грн/день`;
 
-            container.append(divMain);
-            divMain.append(imgForVege);
-            divMain.append(h3SubTitle);            
-            divMain.append(divDescr); 
-            divMain.append(divDivider);
-            divMain.append(divPrice);
-            divPrice.append(divCost);
-            divPrice.append(divTotal);
+    //         container.append(divMain);
+    //         divMain.append(imgForVege);
+    //         divMain.append(h3SubTitle);            
+    //         divMain.append(divDescr); 
+    //         divMain.append(divDivider);
+    //         divMain.append(divPrice);
+    //         divPrice.append(divCost);
+    //         divPrice.append(divTotal);
 
-        }
+    //     }
 
 
-    }
+    // }
 
-    class Elite {
-        constructor(image, alt, subtitle, descr, total) {
-            this.image = image;
-            this.alt = alt;
-            this.subtitle = subtitle;
-            this.descr = descr;
-            this.total = total;
-        }
+    // class Elite {
+    //     constructor(image, alt, subtitle, descr, total) {
+    //         this.image = image;
+    //         this.alt = alt;
+    //         this.subtitle = subtitle;
+    //         this.descr = descr;
+    //         this.total = total;
+    //     }
 
-        addCardElite() {
+    //     addCardElite() {
 
-            const divMain = document.createElement('div');
+    //         const divMain = document.createElement('div');
 
-            divMain.classList.add('menu__item');
-            divMain.innerHTML = `<img src="${this.image}" alt="${this.alt}">
-            <h3 class="menu__item-subtitle">${this.subtitle}</h3>
-            <div class="menu__item-descr">${this.descr}</div>
-            <div class="menu__item-divider"></div>
-            <div class="menu__item-price">
-                <div class="menu__item-cost">Цена:</div>
-                <div class="menu__item-total"><span>${this.total}</span> грн/день</div>
-            </div>`;
+    //         divMain.classList.add('menu__item');
+    //         divMain.innerHTML = `<img src="${this.image}" alt="${this.alt}">
+    //         <h3 class="menu__item-subtitle">${this.subtitle}</h3>
+    //         <div class="menu__item-descr">${this.descr}</div>
+    //         <div class="menu__item-divider"></div>
+    //         <div class="menu__item-price">
+    //             <div class="menu__item-cost">Цена:</div>
+    //             <div class="menu__item-total"><span>${this.total}</span> грн/день</div>
+    //         </div>`;
 
-            container.append(divMain);
+    //         container.append(divMain);
 
-        }
+    //     }
 
-    }
+    // }
 
-    class Post {
-        constructor(src, alt, title, descr, price) {
-            this.src = src;
-            this.alt = alt;            
-            this.title = title;
-            this.descr = descr;
-            this.price = price;
-        }
+    // class Post {
+    //     constructor(src, alt, title, descr, price) {
+    //         this.src = src;
+    //         this.alt = alt;            
+    //         this.title = title;
+    //         this.descr = descr;
+    //         this.price = price;
+    //     }
 
-        // for fun
+    //     // for fun
 
-    }
+    // }
 
     // const obj = new Items(...args);
     // obj.render();
@@ -439,11 +439,22 @@ window.addEventListener('DOMContentLoaded', () => {
     
     forms.forEach(item => { // 16
 
-        postData(item); // 17
+        bindPostData(item); // 17
 
     });
 
-    function postData(form) { // 2
+    const postData = (url, data) => {
+        const res = fetch(url, {
+            method: "POST", // how
+            headers: {'Content-type': 'application/json'}, // how
+            body: data   // what exactly? 
+        });
+
+        return res.json();
+
+    };
+
+    function bindPostData(form) { // 2
    
         form.addEventListener('submit', (e) => { // 3
             e.preventDefault(); // 5 dodajemy na samym początku, by usunąć za każdym razem
@@ -537,7 +548,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // ==========================
 
-    fetch('db.json')
+    fetch('http://localhost:3000/menu')
     .then(data => data.json())
     .then(res => console.log(res)); 
 
