@@ -131,24 +131,20 @@ const getPositiveIncomeAmount = arr => {
     return arr.map(item => item.amount >= 0 ? item.amount : 0).reduce((sum, curr) => sum + curr, 0);
 };
 
-
 const  getTotalIncomeAmount = data => {
-    
-    return data.some(item => item.amount <= 0) == true ? data.map(d => d.amount).reduce((sum, curr) => sum + curr, 0) : getPositiveIncomeAmount(data);
-    
-    // return data.some(item => item.amount <= 0 ? item.amount.reduce((sum, curr) => sum + curr) : getPositiveIncomeAmount(data));
+    return data.some(item => item.amount <= 0) === true ? data.map(d => d.amount).reduce((sum, curr) => sum + curr, 0) : getPositiveIncomeAmount(data);
 };
 
 console.log(getTotalIncomeAmount(funds));
 
-const res = arr => {
+// const res = arr => {
     
-let result = 0;
+// let result = 0;
 
-for ( let i = 0; i < arr.length; i++) {
-    result += arr[i].amount;
-}
-return result;
-};
+// for ( let i = 0; i < arr.length; i++) {
+//     result += arr[i].amount;
+// }
+// return result;
+// };
 
-console.log(res(funds));
+// console.log(res(funds));
