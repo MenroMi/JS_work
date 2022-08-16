@@ -1,6 +1,4 @@
-const form = document.querySelector("form"),
-      div = document.querySelector("[maindiv]"),
-      btn = document.querySelector('button');
+const form = document.querySelector("form");
 
 const messages = {
     loading: 'Загрузка',
@@ -20,20 +18,22 @@ function personData(form) {
         form.append(messageStatus);
 
         const xhr = new XMLHttpRequest(); // 6
-        xhr.open('POST', 'site.php');
+        xhr.open('POST', ' http://localhost:3000/requests');
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         const formData = new FormData(form);
 
-        xhr.send(formData);
+        // xhr.send(formData);
 
-        const obj = {};
+        // const obj = {};
 
-        formData.forEach(function(value, key) {
-            obj[key] = value;
-        });
-        console.log(obj);
+        // formData.forEach(function(value, key) {
+        //     obj[key] = value;
+        // });
+        // console.log(obj);
 
-        const json = JSON.stringify(obj);
+        // const json = JSON.stringify(obj);
+
+        const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
         xhr.send(json);
 
@@ -41,8 +41,8 @@ function personData(form) {
             if (xhr.status == 200) {
                 console.log(xhr.response);
                 messageStatus.textContent = messages.done;
-                btn.textContent = 'Click another one';
-                btn.addEventListener('click', getData);
+                // btn.textContent = 'Click another one';
+                // btn.addEventListener('click', getData);
             } else { //14
                 messageStatus.textContent = messages.error;
 
@@ -52,21 +52,21 @@ function personData(form) {
     });
 }
 
-function getData() {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
+// function getData() {
+//     btn.addEventListener('click', (e) => {
+//         e.preventDefault();
         
-        const xhr = new XMLHttpRequest();
+//         const xhr = new XMLHttpRequest();
 
-        xhr.open('GET', 'site.php');
-        xhr.send();
+//         xhr.open('GET', 'site.php');
+//         xhr.send();
     
-        xhr.addEventListener('load', () => {
+//         xhr.addEventListener('load', () => {
 
-            if (xhr.status == 200) {
-                document.body.append(xhr.response);
-            }
-        });
+//             if (xhr.status == 200) {
+//                 document.body.append(xhr.response);
+//             }
+//         });
 
-    });
-}
+//     });
+// }
