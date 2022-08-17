@@ -404,13 +404,16 @@ window.addEventListener('DOMContentLoaded', () => {
         // to przy odbieraniu danych w json-formacie  metoda json() parsuje w obiekt js
     };
 
-    getData('http://localhost:3000/menu')
-        .then(data => {
-            data.forEach(({img, altimg, title, descr, price}) => {
-                new Items(img, altimg, title, descr, price, ".menu .container").render();
-            });
-        });
-        
+    // getData('http://localhost:3000/menu')
+        // .then(data => {
+        //     data.forEach(({img, altimg, title, descr, price}) => {
+        //         new Items(img, altimg, title, descr, price, ".menu .container").render();
+        //     });
+    //     });
+
+    axios.get("http://localhost:3000/menu")
+    .then(response => console.log(response));
+
 
     // new Items(
     //     "img/tabs/vegy.jpg",
