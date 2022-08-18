@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
         tabsContent.forEach(tab => { // we iterate, cause we want work
         // with all element
             tab.classList.add('hide'); // later we hide useless tabs 
-            tab.classList.remove('show', 'fade');
+            tab.classList.remove('show');
         });
 
         tabs.forEach(tab => { // class-active will be turn off with all
@@ -581,16 +581,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const slider = document.querySelector(".offer__slider"),
           wrapper = slider.querySelector(".offer__slider-wrapper"),
+          img = slider.querySelector('img'),
+          slides = wrapper.querySelectorAll('.offer__slide'),
           current = document.getElementById("current");
 
-    console.log(current);
+    console.log(slider);
     console.log(current.innerHTML);
+    console.log(img.getAttribute("alt"));
 
-    changeImg(slider, current);
+    hideImg();
+    showImg();
+    changeSlider(slider, current);
+
+    function hideImg() {
+        slides.forEach(slide => {
+            slide.classList.add('hide');
+            slide.classList.remove('show');
+        });
+    }
+
+    function showImg(numb = 3) {
+        slides[numb].classList.add('show');
+        slides[numb].classList.remove('hide');
+    }
     
-    function counter(arrow, total) {
+    function count(arrow, total) {
 
-        if(arrow.classList.contains("offer__slider-prev")) {
+        if(arrow.classList.contains("offer__slider-prev") && img.getAttribute("src")) {
             if(total > 1) {
                 total--;
                 return total;
@@ -600,7 +617,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (arrow.classList.contains("offer__slider-next")) {
+        if (arrow.classList.contains("offer__slider-next") && img.getAttribute("src")) {
             if(total < 4) {
                 total++;
                 return total;
@@ -611,7 +628,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function changeImg(slider, curr) {
+    function changeSlider(slider, curr) {
 
         slider.addEventListener('click', (e) => {
 
@@ -619,14 +636,22 @@ window.addEventListener('DOMContentLoaded', () => {
             let numb = curr.textContent;
 
             if (target && target.classList.contains('offer__slider-prev')) {
-                curr.innerHTML = `<span id="current">0${counter(target, numb)}</span>`;
+                console.log(target);
+                const res = count(target, numb);
+                curr.innerHTML = `<span id="current">0${res}</span>`;
                 curr.replaceWith(curr);
+                hideImg(); 
+                showImg(res-1);
+                
             }
         
             if (target && target.classList.contains('offer__slider-next')) {
-
-                curr.innerHTML = `<span id="current">0${counter(target, numb)}</span>`;
+                const res = count(target, numb);
+                curr.innerHTML = `<span id="current">0${res}</span>`;
                 curr.replaceWith(curr);
+                hideImg(); 
+                showImg(res-1);
+                
             }
         });
     }
