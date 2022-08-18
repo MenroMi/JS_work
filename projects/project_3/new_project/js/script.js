@@ -577,4 +577,58 @@ window.addEventListener('DOMContentLoaded', () => {
     // .then(res => console.log(res)); 
 
 
+    // SECOND SLIDE IN OFFER
+
+    const slider = document.querySelector(".offer__slider"),
+          wrapper = slider.querySelector(".offer__slider-wrapper"),
+          current = document.getElementById("current");
+
+    console.log(current);
+    console.log(current.innerHTML);
+
+    changeImg(slider, current);
+    
+    function counter(arrow, total) {
+
+        if(arrow.classList.contains("offer__slider-prev")) {
+            if(total > 1) {
+                total--;
+                return total;
+            } else {
+                total = 4;
+                return total;
+            }
+        }
+
+        if (arrow.classList.contains("offer__slider-next")) {
+            if(total < 4) {
+                total++;
+                return total;
+            } else {
+                total = 1;
+                return total;
+            }
+        }
+    }
+
+    function changeImg(slider, curr) {
+
+        slider.addEventListener('click', (e) => {
+
+            const target = e.target;
+            let numb = curr.textContent;
+
+            if (target && target.classList.contains('offer__slider-prev')) {
+                curr.innerHTML = `<span id="current">0${counter(target, numb)}</span>`;
+                curr.replaceWith(curr);
+            }
+        
+            if (target && target.classList.contains('offer__slider-next')) {
+
+                curr.innerHTML = `<span id="current">0${counter(target, numb)}</span>`;
+                curr.replaceWith(curr);
+            }
+        });
+    }
+
 });
