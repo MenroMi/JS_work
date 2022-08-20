@@ -700,7 +700,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         slidesField.style.transform = `translateX(-${offset}px)`;
 
-        if(slideIndex < 1) {
+        if(slideIndex == 1) {
             slideIndex = slides.length;
         } else {
             slideIndex--;
