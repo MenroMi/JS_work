@@ -702,3 +702,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     
 });
+
+
+// const deleteAllDigits = (str) => +str.replace(/\D/ig, '');
