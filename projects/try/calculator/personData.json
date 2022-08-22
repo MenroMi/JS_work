@@ -1,0 +1,12 @@
+{
+    "activity": {
+        "low": 1.2,
+        "small": 1.375,
+        "medium": 1.55,
+        "high":  1.725
+    },
+
+    "personData": [
+        
+    ]
+}
