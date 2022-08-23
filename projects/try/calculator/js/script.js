@@ -10,6 +10,7 @@ defineGender(gender);
 hideClass();
 inputs();
 takeActivity();
+result();
 
 function result() {
 
@@ -99,7 +100,7 @@ function takeActivity() {
 function inputs() {
 
     calcInputs.forEach(input => {
-        input.addEventListener('blur', (e) => {
+        input.addEventListener('input', (e) => {
             const target = e.target;
             if ( target.id === 'height') {
                 height = +target.value;
