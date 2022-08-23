@@ -1,26 +1,40 @@
 const gender = document.querySelector('#gender'),
       divs = document.querySelectorAll(".calculating__choose-item"),
-      psychicalActivity = document.querySelector(".calculating__choose_big"),
-      levelOfActivity = psychicalActivity.querySelectorAll(".calculating__choose-item"),
       constitution = document.querySelector(".calculating__choose_medium"),
       calcInputs = constitution.querySelectorAll('input'),
-      total = document.querySelector(".calculating__total");
+      total = document.querySelector(".calculating__result");
 
-
+let sex, activity, height, weight, age;
 
 defineGender(gender);
 hideClass();
-chooseGenderAndPhysicalActivity();
+inputs();
+takeActivity();
+
+function result() {
+
+    if (Boolean(sex && activity && height && weight && age) == false) {
+        return total.innerHTML = `<span>0</span> ккал
+        </div>`;
+    }
+
+    if (sex === 'Мужчина') {
+        const res = 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age);
+        total.innerHTML = `
+    <div class="calculating__result">
+        <span>${Math.trunc((res * activity))}</span> ккал
+    </div>`;
+    } else {
+        const res = 447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age);
+        total.innerHTML = `
+    <div class="calculating__result">
+        <span>${Math.trunc((res * activity))}</span> ккал
+    </div>`;
+    }
 
 
-function defineGender(g) {
-    const collOfG = g.children;
-    collOfG[0].setAttribute('id', 'man');
-    collOfG[1].setAttribute('id', 'man');
 }
 
-const people = document.querySelectorAll('#man');
-    //   woman = document.querySelector('#woman');
 
 function hideClass(item = divs) {
     item.forEach(man => {
@@ -36,51 +50,12 @@ function addClass(item, i) {
 
 }
 
-const checkActive = async (url, i) => {
-    return await fetch(url)
-    .then(data => data.json())
-    .then(data => personData(data[i]));
-};
+function defineGender(g) {
+    const collOfG = g.children;
+    collOfG[0].setAttribute('id', 'man');
+    collOfG[1].setAttribute('id', 'man');
 
-const person = {};
-
-function personData(item) {
-
-    if (item === 'Женщина' || item === 'Мужчина') {
-        person.gender = item;
-    }
-    if (typeof item == "number") {
-        person.activity = item;
-    }
-    if ( item.id === "height") {
-        person.height = +item.value;    
-    } else if (item.id === "weight") {
-        person.weight = +item.value;
-    } else if (item.id === "age") {
-        person.age = +item.value;
-    }
-}
-
-calcCcal(person);
-
-function calcCcal(obj) {
-    if (obj.gender === 'Мужчина') {
-        const res = 88.36 + (13.4 * obj.weight) + (4.8 * obj.height) - (5.7 * obj.age);
-        total.innerHTML = `<div class="calculating__subtitle">Ваша суточная норма калорий:</div>
-    <div class="calculating__result">
-        <span>${(res * obj.activity)}</span> ккал
-    </div>`;
-    } else {
-        const res = 447.6 + (9.2 * obj.weight) + (3.1 * obj.height) - (4.3 * obj.age);
-        total.innerHTML = `<div class="calculating__subtitle">Ваша суточная норма калорий:</div>
-    <div class="calculating__result">
-        <span>${(res * obj.activity)}</span> ккал
-    </div>`;
-    }
-}
-
-
-function chooseGenderAndPhysicalActivity() {
+    const people = document.querySelectorAll('#man');
 
     gender.addEventListener('click', (e) => {
         const target = e.target;
@@ -89,10 +64,25 @@ function chooseGenderAndPhysicalActivity() {
             if (target == p) {
                 hideClass(people);
                 addClass(people, i);
-                personData(p.textContent);
+                sex = p.textContent;
+                result();
             }
         });
     });
+}
+
+const checkActive = async (url, i) => {
+    await fetch(url)
+    .then(data => data.json())
+    .then(data => activity = data[i]);
+
+    return await result();
+};
+
+function takeActivity() {
+
+    const psychicalActivity = document.querySelector(".calculating__choose_big"),
+    levelOfActivity = psychicalActivity.querySelectorAll(".calculating__choose-item");
 
     psychicalActivity.addEventListener('click', (e) => {
         const target = e.target;
@@ -104,33 +94,24 @@ function chooseGenderAndPhysicalActivity() {
             }
         });
     });
+}
+
+function inputs() {
 
     calcInputs.forEach(input => {
-        input.addEventListener('change', (e) => {
+        input.addEventListener('blur', (e) => {
             const target = e.target;
-            personData(target);
+            if ( target.id === 'height') {
+                height = +target.value;
+            }
+            if ( target.id === 'weight') {
+                weight = +target.value;
+            }
+            if ( target.id === 'age') {
+                age = +target.value;
+            }
+            result();
         });
     });
 
 }
-
-
-// class Person {
-//     constructor(gender, activity, height, weight, age) {
-//         this.gender = gender;
-//         this.activity = activity;
-//         this.height = height;
-//         this.weight = weight;
-//         this.age = age;
-//     }
-
-//     // checkBMR() {
-//     //     fetch("http://localhost:3000/personData", {
-//     //         method: "POST",
-//     //         headers: {"Content-type": "application/json"},
-//     //         body: 
-//     //     });
-//     // }
-
-// }
-
