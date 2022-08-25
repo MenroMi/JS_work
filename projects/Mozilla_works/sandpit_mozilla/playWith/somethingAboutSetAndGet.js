@@ -1,3 +1,6 @@
+"use strict";
+
+
 const nameOfObj = {
   firstThing: 'apple',
   secondThing: 'banana',
@@ -82,6 +85,33 @@ console.log(availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY'));
 
 // ==================
 
+const animal = {
+  character: "cat",
+  name: 'Yuki',
+  age: 1,
 
+  get nameCat() {
+    return `${this.name} this is a ${this.character}`;
+  },
 
+  set nameCat(name) {
+    [this.name, this.age] = name.split(' ');
+  }
+
+};
+
+animal.nameCat = 'Obi 2';
+console.log(animal.nameCat);
+console.log(animal.age);
+
+// =================================
+
+function User(name, birthday) {
+  this.name = name;
+  this.birthday = birthday;
+}
+
+const alex = new User('Alex', 25);
+
+console.log(alex.name, alex.age);
 
