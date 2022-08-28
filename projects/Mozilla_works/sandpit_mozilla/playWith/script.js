@@ -123,3 +123,80 @@ console.log(dog.info());
 // arr.hello = () => "Hello";
 
 // console.log(arr.hello());
+
+
+// =====================
+
+class Person {
+    #age;
+
+    constructor(name, age) {
+        this.name = name;
+        this.#age = age;
+    }
+
+    get getAge() {return this.#age;}
+    
+    set getAge(age) {this.#age = age;}
+    
+}
+
+const kiryl = new Person("Kiryl", 23);
+kiryl.getAge = 25;
+console.log(kiryl.getAge);
+// kiryl.getAge = 25;x`
+// console.log(kiryl.getAge);
+
+
+const makeCoffee = (function() {
+    let counter, status;
+    const checkCoffee = function(numb) {
+        counter = numb;
+        console.log(counter);
+        if ( counter > 0 ) {
+            status = true;
+            console.log('We have some coffee');
+        } else {
+            status = false;
+            console.log('We dont have coffee.Sorry!');
+        }
+    };
+    const makeOneCupCoffee = function() {
+        checkCoffee(0);
+        setTimeout(()=> {
+            if (status === true) {
+                console.log('One cup is ready for drink');
+            }
+        }, 3000);
+    };
+
+    return {
+        oneCoffee: makeOneCupCoffee
+    };
+}());
+
+makeCoffee.oneCoffee();
+
+
+const fridge = (function(){
+    const contentsFridge = {};
+
+    contentsFridge.drinks = function() {
+        console.log('In frigde are 5 various drinks');
+    };
+
+    contentsFridge.food = function() {
+        console.log("In fridge is some food...");
+    };
+
+    contentsFridge.alcohol = function() {
+        console.log("In fridge isn't alcohol drink");
+    };
+
+    return contentsFridge;
+
+}());
+
+fridge.drinks();
+fridge.food();
+fridge.alcohol();
