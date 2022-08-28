@@ -1,7 +1,7 @@
 function timer() {
      // TIMER
 
-     const deadline = "2022-07-31T23:58:59.000Z"; // data końcowa
+     const deadline = "2022-08-30T23:58:59.000Z"; // data końcowa
 
      function getTimeRemainig(endtime) {
          // różnica między datą aktualną i datą końcową
