@@ -8,12 +8,12 @@ window.addEventListener('DOMContentLoaded', () => {
           slider = require("./modules/slider"),
           calc = require("./modules/calc");
 
-        tabs();
-        timer();
-        modal();
-        cards();
-        forms();
-        slider();
-        calc();
+    tabs();
+    timer();
+    modal();
+    cards();
+    forms();
+    slider();
+    calc();
 
 });

@@ -757,13 +757,13 @@ window.addEventListener('DOMContentLoaded', () => {
           slider = __webpack_require__(/*! ./modules/slider */ "./js/modules/slider.js"),
           calc = __webpack_require__(/*! ./modules/calc */ "./js/modules/calc.js");
 
-        tabs();
-        timer();
-        modal();
-        cards();
-        forms();
-        slider();
-        calc();
+    tabs();
+    timer();
+    modal();
+    cards();
+    forms();
+    slider();
+    calc();
 
 });
 })();
