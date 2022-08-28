@@ -78,3 +78,48 @@ alex.age = 101; // setter
 alex.age = 89; // setter
 alex.secondname = 'Hoker1';
 console.log(alex.say());
+
+// =============================
+
+
+class Animal {
+
+    constructor(kide, age, food) {
+        this.#kide = kide;
+        this.age = age;
+        this.food = food;
+    }
+
+    info() {
+        return `${this.#kide} eat only ${this.food}. They lived are ${this.age} years.`;
+    }
+}
+
+const dog = new Animal("Canidae", 20, 'chicken');
+
+dog.#kide = 'felidae';
+
+console.log(dog.info());
+
+// ================
+
+// class Person {
+//     constructor(firstName, lastName) {
+//       this.firstName = firstName;
+//       this.lastName = lastName;
+//     }
+//     get fullName() {
+//       return this.firstName + ' ' + this.lastName;
+//     }
+// }
+
+// const kiryl = new Person('Kiryl', 'Honker');
+
+// console.log(kiryl.fullName);
+
+// // ==============
+
+// const arr = Object.create(Array.prototype);
+// arr.hello = () => "Hello";
+
+// console.log(arr.hello());
