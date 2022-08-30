@@ -1,18 +1,22 @@
+import tabs from "./modules/tabs";
+import timer from "./modules/timer";
+import modal from "./modules/modal";
+import cards from "./modules/cards";
+import forms from "./modules/forms";
+import slider from "./modules/slider";
+import calc from "./modules/calc";
+import {openWindow} from "./modules/modal";
+
 window.addEventListener('DOMContentLoaded', () => {
 
-    const tabs = require("./modules/tabs"),
-          timer = require("./modules/timer"),
-          modal = require("./modules/modal"),
-          cards = require("./modules/cards"),
-          forms = require("./modules/forms"),
-          slider = require("./modules/slider"),
-          calc = require("./modules/calc");
+    const modalTimerId = setTimeout(() => openWindow(".modal", modalTimerId), 10000); // when we want open modal window
+    //after some time, and clear interval later
 
     tabs();
     timer();
-    modal();
+    modal("[data-modal]", '.modal', modalTimerId);
     cards();
-    forms();
+    forms(modalTimerId);
     slider();
     calc();
 

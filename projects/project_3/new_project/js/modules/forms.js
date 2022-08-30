@@ -1,4 +1,6 @@
-function forms() {
+import {closeWindow, openWindow} from "./modal";
+
+function forms(modalTimerId) {
     const forms = document.querySelectorAll('form'); // 1
 
     const message = { // 18
@@ -70,11 +72,6 @@ function forms() {
         });
     }
 
-    function openModal() {
-        modalWindow.classList.add('show');
-        document.body.style.overflow = 'hidden';
-    }
-
 
     function showThanksModal(message) { // chcemy pokazać nowe modalnie okno po wysłaniu form
         // nie usunąć, tylko ukryć poprzednie i uwidocznić nowo stworzone;
@@ -83,7 +80,7 @@ function forms() {
         // podczas usuwania, przy powtórnej próbie włączyć modalne okno, nie otworzy się
 
         prevModalDialog.classList.add('hide'); //ukrywamy modalne okno
-        openModal(); // odpowiada za włączenie modalnych okien
+        openWindow('.modal', modalTimerId); // odpowiada za włączenie modalnych okien
         const thanksModal = document.createElement('div'); // tworzymy nowe okno modalne (dynamiczne tworzony element)
         thanksModal.classList.add('modal__dialog'); // dodaje się do nowego okna ten sam styl. Taka zamiana jednego modalnego okna na drugie
         thanksModal.innerHTML = `
@@ -97,10 +94,10 @@ function forms() {
         setTimeout(() => {
             thanksModal.remove();
             prevModalDialog.classList.remove('hide');
-            closeWindow();
+            closeWindow('.modal');
         }, 4000);
 
     }
 }
 
-module.exports = forms;
+export default forms;
