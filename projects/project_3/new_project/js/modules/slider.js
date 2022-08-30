@@ -1,12 +1,12 @@
-function slider() {
-    const slides = document.querySelectorAll('.offer__slide'),
-    slider = document.querySelector('.offer__slider'),
-    prev = document.querySelector('.offer__slider-prev'),
-    next = document.querySelector('.offer__slider-next'),
-    total = document.getElementById("total"),
-    current = document.getElementById('current'),
-    wrapper = document.querySelector(".offer__slider-wrapper"),
-    slidesField = document.querySelector(".offer__slider-inner"),
+function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCounter, field, wrap}) {
+    const slides = document.querySelectorAll(slide),
+    slider = document.querySelector(container),
+    prev = document.querySelector(prevArrow),
+    next = document.querySelector(nextArrow),
+    total = document.getElementById(totalCounter),
+    current = document.getElementById(currentCounter),
+    wrapper = document.querySelector(wrap),
+    slidesField = document.querySelector(field),
     width = wrapper.getBoundingClientRect().width,
     navi = document.createElement('ol'),
     dots = []; //lista menu

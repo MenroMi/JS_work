@@ -146,6 +146,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./js/services/services.js");
+
+
 function cards() {
     const menu = document.querySelector('.menu'),
           field = menu.querySelector('.menu__field'),
@@ -198,18 +201,9 @@ function cards() {
 
     }
 
-    const getData = async (url) => {
-        const getReq = await fetch(url);
 
-        if (!getReq.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${getReq.status}`);
-        }
 
-        return await getReq.json(); // skoro json format jest na backendzie strony
-        // to przy odbieraniu danych w json-formacie  metoda json() parsuje w obiekt js
-    };
-
-    getData('http://localhost:3000/menu')
+    (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.getData)('http://localhost:3000/menu')
         .then(data => {
             data.forEach(({img, altimg, title, descr, price}) => {
                 new Items(img, altimg, title, descr, price, ".menu .container").render();
@@ -233,10 +227,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal */ "./js/modules/modal.js");
+/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/services */ "./js/services/services.js");
 
 
-function forms(modalTimerId) {
-    const forms = document.querySelectorAll('form'); // 1
+
+function forms(formSelector, modalTimerId) {
+    const forms = document.querySelectorAll(formSelector); // 1
 
     const message = { // 18
         loading: 'img/form/spinner.svg', // żeby dodać zdjęcie
@@ -250,17 +246,6 @@ function forms(modalTimerId) {
         bindPostData(item); // 17
 
     });
-
-    const postData = async (url, data) => { // dodajemy kolejkę async
-        const res = await fetch(url, { // najpierw ten kod
-            method: "POST", // how
-            headers: {'Content-type': 'application/json'}, // how
-            body: data   // what exactly? 
-        });
-
-        return await res.json(); // dopiero później ten jako drugi
-
-    };
 
 
 
@@ -292,7 +277,7 @@ function forms(modalTimerId) {
             
             // // ===============
 
-            postData('http://localhost:3000/requests', json)
+            (0,_services_services__WEBPACK_IMPORTED_MODULE_1__.postData)('http://localhost:3000/requests', json)
             .then((data) => {
                 console.log(data);
                 showThanksModal(message.success);
@@ -429,15 +414,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function slider() {
-    const slides = document.querySelectorAll('.offer__slide'),
-    slider = document.querySelector('.offer__slider'),
-    prev = document.querySelector('.offer__slider-prev'),
-    next = document.querySelector('.offer__slider-next'),
-    total = document.getElementById("total"),
-    current = document.getElementById('current'),
-    wrapper = document.querySelector(".offer__slider-wrapper"),
-    slidesField = document.querySelector(".offer__slider-inner"),
+function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCounter, field, wrap}) {
+    const slides = document.querySelectorAll(slide),
+    slider = document.querySelector(container),
+    prev = document.querySelector(prevArrow),
+    next = document.querySelector(nextArrow),
+    total = document.getElementById(totalCounter),
+    current = document.getElementById(currentCounter),
+    wrapper = document.querySelector(wrap),
+    slidesField = document.querySelector(field),
     width = wrapper.getBoundingClientRect().width,
     navi = document.createElement('ol'),
     dots = []; //lista menu
@@ -583,12 +568,12 @@ function slider() {
   \****************************/
 /***/ ((module) => {
 
-function tabs() {
+function tabs(tabsSelector, tabsContentSelector, tabsParentSelector, activeClass) {
     // TABS
 
-    const tabs = document.querySelectorAll('.tabheader__item'),
-        tabsContent = document.querySelectorAll('.tabcontent'),
-        tabsParent = document.querySelector('.tabheader__items');
+    const tabs = document.querySelectorAll(tabsSelector),
+        tabsContent = document.querySelectorAll(tabsContentSelector),
+        tabsParent = document.querySelector(tabsParentSelector);
 
 
     function hideTabContent() { // function, which hide all useless tabs
@@ -602,7 +587,7 @@ function tabs() {
         tabs.forEach(tab => { // class-active will be turn off with all
             // off tabs
 
-            tab.classList.remove("tabheader__item_active");
+            tab.classList.remove(activeClass);
         });
 
     }
@@ -613,7 +598,7 @@ function tabs() {
 
         tabsContent[numb].classList.add('show', 'fade');
         tabsContent[numb].classList.remove('hide');
-        tabs[numb].classList.add("tabheader__item_active"); // we add
+        tabs[numb].classList.add(activeClass); // we add
         // our tab activity class
 
     }
@@ -624,7 +609,7 @@ function tabs() {
     tabsParent.addEventListener('click', (e) => {
         const target = e.target;
         // console.log(target);
-        if (target && target.classList.contains('tabheader__item')) {
+        if (target && target.classList.contains(tabsSelector.slice(1))) {
             tabs.forEach((tab, i) => {
                 if (target == tab) {
                     // console.log(tab);
@@ -653,10 +638,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function timer() {
+function timer(id, deadline) {
      // TIMER
 
-     const deadline = "2022-08-30T23:58:59.000Z"; // data końcowa
+    //  const deadline = "2022-08-30T23:58:59.000Z"; // data końcowa
 
      function getTimeRemainig(endtime) {
          // różnica między datą aktualną i datą końcową
@@ -739,10 +724,48 @@ function timer() {
          
      }
  
-     setClock('.timer', deadline);
+     setClock(id, deadline);
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (timer);
+
+/***/ }),
+
+/***/ "./js/services/services.js":
+/*!*********************************!*\
+  !*** ./js/services/services.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getData": () => (/* binding */ getData),
+/* harmony export */   "postData": () => (/* binding */ postData)
+/* harmony export */ });
+const postData = async (url, data) => { // dodajemy kolejkę async
+    const res = await fetch(url, { // najpierw ten kod
+        method: "POST", // how
+        headers: {'Content-type': 'application/json'}, // how
+        body: data   // what exactly? 
+    });
+
+    return await res.json(); // dopiero później ten jako drugi
+
+};
+
+const getData = async (url) => {
+    const getReq = await fetch(url);
+
+    if (!getReq.ok) {
+        throw new Error(`Could not fetch ${url}, status: ${getReq.status}`);
+    }
+
+    return await getReq.json(); // skoro json format jest na backendzie strony
+    // to przy odbieraniu danych w json-formacie  metoda json() parsuje w obiekt js
+};
+
+
 
 /***/ })
 
@@ -844,12 +867,21 @@ window.addEventListener('DOMContentLoaded', () => {
     const modalTimerId = setTimeout(() => (0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__.openWindow)(".modal", modalTimerId), 10000); // when we want open modal window
     //after some time, and clear interval later
 
-    _modules_tabs__WEBPACK_IMPORTED_MODULE_0___default()();
-    (0,_modules_timer__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    _modules_tabs__WEBPACK_IMPORTED_MODULE_0___default()('.tabheader__item', '.tabcontent', '.tabheader__items', "tabheader__item_active");
+    (0,_modules_timer__WEBPACK_IMPORTED_MODULE_1__["default"])(".timer", "2022-09-30T23:58:59.000Z");
     (0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__["default"])("[data-modal]", '.modal', modalTimerId);
     (0,_modules_cards__WEBPACK_IMPORTED_MODULE_3__["default"])();
-    (0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])(modalTimerId);
-    (0,_modules_slider__WEBPACK_IMPORTED_MODULE_5__["default"])();
+    (0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])("form", modalTimerId);
+    (0,_modules_slider__WEBPACK_IMPORTED_MODULE_5__["default"])({
+        container: '.offer__slider',
+        slide: '.offer__slide',
+        nextArrow: '.offer__slider-next',
+        prevArrow: '.offer__slider-prev',
+        totalCounter: "total",
+        currentCounter: 'current',
+        field: ".offer__slider-inner",
+        wrap: ".offer__slider-wrapper"
+    });
     (0,_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])();
 
 });

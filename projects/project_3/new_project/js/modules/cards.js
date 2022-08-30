@@ -1,3 +1,5 @@
+import {getData} from "../services/services";
+
 function cards() {
     const menu = document.querySelector('.menu'),
           field = menu.querySelector('.menu__field'),
@@ -50,16 +52,7 @@ function cards() {
 
     }
 
-    const getData = async (url) => {
-        const getReq = await fetch(url);
 
-        if (!getReq.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${getReq.status}`);
-        }
-
-        return await getReq.json(); // skoro json format jest na backendzie strony
-        // to przy odbieraniu danych w json-formacie  metoda json() parsuje w obiekt js
-    };
 
     getData('http://localhost:3000/menu')
         .then(data => {

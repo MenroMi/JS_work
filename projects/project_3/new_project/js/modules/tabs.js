@@ -1,9 +1,9 @@
-function tabs() {
+function tabs(tabsSelector, tabsContentSelector, tabsParentSelector, activeClass) {
     // TABS
 
-    const tabs = document.querySelectorAll('.tabheader__item'),
-        tabsContent = document.querySelectorAll('.tabcontent'),
-        tabsParent = document.querySelector('.tabheader__items');
+    const tabs = document.querySelectorAll(tabsSelector),
+        tabsContent = document.querySelectorAll(tabsContentSelector),
+        tabsParent = document.querySelector(tabsParentSelector);
 
 
     function hideTabContent() { // function, which hide all useless tabs
@@ -17,7 +17,7 @@ function tabs() {
         tabs.forEach(tab => { // class-active will be turn off with all
             // off tabs
 
-            tab.classList.remove("tabheader__item_active");
+            tab.classList.remove(activeClass);
         });
 
     }
@@ -28,7 +28,7 @@ function tabs() {
 
         tabsContent[numb].classList.add('show', 'fade');
         tabsContent[numb].classList.remove('hide');
-        tabs[numb].classList.add("tabheader__item_active"); // we add
+        tabs[numb].classList.add(activeClass); // we add
         // our tab activity class
 
     }
@@ -39,7 +39,7 @@ function tabs() {
     tabsParent.addEventListener('click', (e) => {
         const target = e.target;
         // console.log(target);
-        if (target && target.classList.contains('tabheader__item')) {
+        if (target && target.classList.contains(tabsSelector.slice(1))) {
             tabs.forEach((tab, i) => {
                 if (target == tab) {
                     // console.log(tab);

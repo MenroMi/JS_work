@@ -1,7 +1,8 @@
 import {closeWindow, openWindow} from "./modal";
+import {postData} from "../services/services";
 
-function forms(modalTimerId) {
-    const forms = document.querySelectorAll('form'); // 1
+function forms(formSelector, modalTimerId) {
+    const forms = document.querySelectorAll(formSelector); // 1
 
     const message = { // 18
         loading: 'img/form/spinner.svg', // żeby dodać zdjęcie
@@ -15,17 +16,6 @@ function forms(modalTimerId) {
         bindPostData(item); // 17
 
     });
-
-    const postData = async (url, data) => { // dodajemy kolejkę async
-        const res = await fetch(url, { // najpierw ten kod
-            method: "POST", // how
-            headers: {'Content-type': 'application/json'}, // how
-            body: data   // what exactly? 
-        });
-
-        return await res.json(); // dopiero później ten jako drugi
-
-    };
 
 
 
