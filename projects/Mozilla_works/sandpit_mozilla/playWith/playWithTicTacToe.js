@@ -58,7 +58,7 @@ function tictactoe(board) {
     }
 
     function checkOurValue() {
-        
+
 
 
     }
@@ -72,23 +72,3 @@ tictactoe([[1, 1, 1], [0, 0, 2], [2, 0, 2]]); // 1
 // tictactoe([ [ 0, 0, 2 ], [ 0, 0, 0 ], [ 1, 0, 1 ] ]); // -1
 // tictactoe([ [ 1, 2, 1 ], [ 1, 1, 2 ], [ 2, 1, 2 ] ]); // 0
 // tictactoe([ [ 2, 1, 2 ], [ 2, 1, 1 ], [ 1, 2, 1 ] ]); // 0
-
-// if (sum === 0) {
-//     b1 = arr[i];
-// } else if ( sum === 1) {
-//     b2 = arr[i];
-// } else if (sum === 2) {
-//     b3 = arr[i];
-// } else if (sum === 3) {
-//     b4 = arr[i];
-// } else if (sum === 4) {
-//     b5 = arr[i];
-// } else if (sum === 5) {
-//     b6 = arr[i];
-// } else if(sum === 6) {
-//     b7 = arr[i];
-// } else if (sum=== 7) {
-//     b8 = arr[i];
-// } else if (sum === 8) {
-//     b9 = arr[i];
-// }
