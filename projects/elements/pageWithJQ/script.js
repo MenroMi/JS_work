@@ -2,19 +2,11 @@ import $ from 'jquery';
 
 $(document).ready(function()  {
     
-    const btn = $("#btn");
-    
-    function addActive() {
-        btn.addClass('active');
-        btn.off('mouseout', addActive);
-    }
+    // const btn = $("#btn");
 
-    function removeActive() {
-        btn.removeClass('active');
-    }
-
-
-    btn.on('mouseenter', addActive);
+    $(".list-item:first").hover(function() {
+        $(this).toggleClass('active');
+    });
 
     
     // btn.mouseenter(() => {
@@ -23,8 +15,11 @@ $(document).ready(function()  {
     //         btn.removeClass('active');
     //     });
     // });
-    
-    console.log('hello');
+
+    $(".list-item:eq(2)").on('click', function() {
+        $(".image:even").fadeToggle();
+    });
+
 
     // const btn = $("#btn"); // document.querySelector("#btn"); 
     // console.log(btn);
