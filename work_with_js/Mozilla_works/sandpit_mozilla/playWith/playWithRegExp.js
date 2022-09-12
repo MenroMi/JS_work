@@ -28,7 +28,7 @@ function camelCase(exp) {
 
     
     exp.replace(/\W/g, '');
-    exp.replace(//)
+    exp.replace();
 
 }
 
@@ -65,3 +65,5 @@ console.log(camelCase("The-Stealth-Warrior"));
 
 // let regexp = /\.+/g;
 // console.log( "Привет!... Как дела?.....".match(regexp) );
+
+

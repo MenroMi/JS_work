@@ -19,3 +19,9 @@ delete family.mother.husband;
 
 console.log(family);
 console.log(family.man);
+
+//==============
+
+let str = 'abcde';
+
+console.log(str.search(/cde/));
