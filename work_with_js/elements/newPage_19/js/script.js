@@ -31,3 +31,9 @@ function btnsAddNewText(btn, ind) {
     })
 
 }
+
+// ===================================
+
+let arr = [4, 3, 2, 1];
+arr.forEach((_, i) => arr[i]--)
+console.log(arr);
