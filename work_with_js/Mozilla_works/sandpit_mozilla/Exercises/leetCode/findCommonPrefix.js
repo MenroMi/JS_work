@@ -20,3 +20,24 @@ longestCommonPrefix(["flower","flow", "floweewqreerw", "flight", "floweewqreerw"
 longestCommonPrefix(["dog","racecar","car"]);
 longestCommonPrefix(['a']);
 longestCommonPrefix(['']);
+
+/*
+
+arr.forEach((el, i) => {
+    for(let k = 0; k < el.length; k++) {
+        if(i >= 1) {
+            if(prefix[k] === el[k]) {
+                res = prefix.slice(0, k+1);
+            } else {
+                prefix = el;
+                break;
+            }
+        } else if (arr.length <= 1) {
+            res += el[k];
+        } else {            
+            prefix += el[k];
+        }
+    }   
+})
+
+*/
