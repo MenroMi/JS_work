@@ -1,0 +1,133 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+            "_version": "1.1.0",
+            "id": "<component ID>",
+            "type": "application",
+            "i18n": "i18n/texts.properties",
+            "title": "{{AnalyticalConfigurationName}}",
+            "description": "{{<key in .properties file>}}",
+            "applicationVersion": {
+                    "version": "${project.version}"
+            },
+            "ach": "<ach>",
+            "dataSources": {
+                    "<data source for analytical request>": {
+                            "uri": "<service root of analytical request>",
+                            "type": "OData",
+                            "settings": {
+                                    "annotations": [
+                                            "<annotation data source>"
+                                    ],
+                                    "odataVersion": "2.0"
+                            }
+                    },
+                    "<annotation data source>": {
+                            "uri": "<location of annotation file>",
+                            "type": "ODataAnnotation",
+                            "settings": {
+                                    "localUri": "<location of local annotation file>"
+                            }
+                    },
+                    "PathPersistenceServiceRoot": {
+                            "uri": "<URI of path persistence>",
+                            "type": "OData",
+                            "settings": {
+                                    "odataVersion": "2.0"
+                            }
+                    },
+                    "SmartBusiness": {
+                            "uri": "/sap/hba/r/sb/core/odata/runtime/SMART_BUSINESS.xsodata",
+                            "type": "OData",
+                            "settings": {
+                                    "odataVersion": "2.0"
+                            }
+                    },
+                    "LogicalSystem": {
+                            "uri": "/sap/hba/apps/wca/dso/s/odata/wca.xsodata",
+                            "type": "OData",
+                            "settings": {
+                                    "odataVersion": "2.0"
+                            }
+                    }
+            },
+            "AnalyticalConfigurationLocation": {
+                    "uri": "./config/analyticalConfiguration.json",
+                    "type": "JSON"
+            },
+            "resources": "resources.json",
+            "offline": false
+    },
+    "sap.fiori": {
+            "_version": "1.1.0",
+            "registrationIds": [
+                    "<FioriId>"
+            ],
+            "archeType": "analytical"
+    },
+    "sap.ui": {
+            "_version": "1.1.0",
+            "technology": "UI5",
+            "deviceTypes": {
+                    "desktop": true,
+                    "tablet": true,
+                    "phone": false
+            },
+            "supportedThemes": [
+                    "sap_hcb",
+                    "sap_belize"
+            ]
+    },
+    "sap.ui5": {
+            "_version": "1.1.0",
+            "dependencies": {
+                    "minUI5Version": "1.38.1",
+                    "libs": {
+                            "sap.ui.core": {
+                                    "minVersion": "1.38.1",
+                                    "lazy" : false
+                            },
+                            "sap.ca.ui": {
+                                    "minVersion": "1.38.1",
+                                    "lazy" : false
+                            },
+                            "sap.m": {
+                                    "minVersion": "1.38.1",
+                                    "lazy" : false
+                            },
+                            "sap.ui.layout": {
+                                    "minVersion": "1.38.1",
+                                    "lazy" : false
+                           },
+                            "sap.ushell": {
+                                    "minVersion": "1.38.1",
+                                    "lazy" : false
+                            },
+                            "sap.apf": {
+                                    "minVersion": "1.38.1",
+                                    "lazy" : false
+                            },
+                            "sap.viz": {
+                                    "minVersion": "1.38.1",
+                                    "lazy" : false
+                            }
+                    }
+            },
+            "extends": {
+                    "component": "sap.apf.base"
+            },
+            "contentDensities": {
+                    "compact": false,
+                    "cozy": false
+            },
+            "models": {
+                    "i18n": {
+                            "type": "sap.ui.model.resource.ResourceModel",
+                            "uri": "i18n/texts.properties"
+                    }
+            },
+            "config": {
+                    "sapFiori2Adaptation": true
+            }
+    }
+}

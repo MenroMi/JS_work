@@ -1,0 +1,4 @@
+specVersion: '2.6'
+metadata:
+  name: sap-ui5-walkthrough
+type: application
