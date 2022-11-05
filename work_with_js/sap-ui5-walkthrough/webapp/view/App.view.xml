@@ -3,5 +3,6 @@
 
     <Text text="Hello World again"/>
     <Button text="Say Hello" press=".onShowHello"/>
+    <Input value="{/user/name}" description="Hello {/user/name}" valueLiveUpdate="true" width="50%"/>
 
 </mvc:View>
