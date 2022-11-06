@@ -11,8 +11,9 @@ h1 {
 .block {
   position: relative;
   background-color: green;
-  width: 120px;
-  height: 120px;
+  display: block;
+  width: 250px;
+  height: 250px;
 }
 .block .block_title {
   position: absolute;

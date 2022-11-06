@@ -1,4 +1,8 @@
 $text_color: pink
+@mixin box
+    display: block
+    width: 250px
+    height: 250px
     
 *
     box-sizing: border-box
@@ -10,8 +14,7 @@ h1
 .block
     position: relative
     background-color: green
-    width: 120px
-    height: 120px
+    @include box
     .block_title
         position: absolute
         color: $text_color
